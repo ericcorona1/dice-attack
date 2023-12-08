@@ -1,51 +1,39 @@
-# new-dice
+# Dice Attack
 
-This template should help get you started developing with Vue 3 in Vite.
+## Objective
 
-## Recommended IDE Setup
+Engage in a strategic dice battle with an opponent using a set of 6 dice.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Phases of Gameplay
 
-## Customize configuration
+### Phase 1 - Dice Selection
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- Choose 6 dice from the following types:
+  - d4
+  - d6
+  - d8
+  - d10
+  - d12
+  - d20
 
-## Project Setup
+### Phase 2 - Attack Phase
 
-```sh
-npm install
-```
+- The attacking player picks a die from the defending player to target.
+- Choose the attacking die or dice.
+- There are 2 types of attacks:
+  - **Greater Than Attack:** Use one die with a greater value than the defending die.
+  - **Equal to Attack:** Use 2 or more dice that add up to the exact value of the defending die.
+- After attacking play switches to the other player.
+- Play continues until no more moves can be made.
 
-### Compile and Hot-Reload for Development
+## Scoring
 
-```sh
-npm run dev
-```
+- The player with the most points wins.
+- Points are based on both captured and remaining dice.
+- Captured dice are worth points equal to the number of sides they have.
+- Remaining dice contribute 1 point each, with points increasing for each additional die.
+  - The first remaining die is worth 1 point.
+  - The second remaining die is worth 2 points.
+  - Subsequent dice follow this pattern.
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
-
-```sh
-npm run test:unit:dev # or `npm run test:unit` for headless testing
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
+May the most strategic player emerge victorious!
