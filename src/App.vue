@@ -1,12 +1,14 @@
 <script setup>
 import WelcomeScreen from "./components/WelcomeScreen.vue";
-import TheWelcome from "./components/TheWelcome.vue";
+import Instructions from "./components/Instructions.vue";
 </script>
 
 <template>
   <header></header>
 
-  <main></main>
+  <main>
+    <Instructions />
+  </main>
 </template>
 
 <style scoped></style>
