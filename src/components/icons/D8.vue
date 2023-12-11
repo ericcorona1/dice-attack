@@ -5,8 +5,8 @@
       preserveAspectRatio="xMidYMid meet"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <!-- D8 -->
-      <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="blue" />
+      <!-- D8: Vertical Diamond -->
+      <polygon points="50,5 95,50 50,95 5,50" fill="blue" />
     </svg>
   </div>
 </template>

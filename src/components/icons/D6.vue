@@ -5,8 +5,8 @@
       preserveAspectRatio="xMidYMid meet"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <!-- D6 -->
-      <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="blue" />
+      <!-- D6: Square -->
+      <rect x="5" y="5" width="90" height="90" fill="blue" />
     </svg>
   </div>
 </template>
