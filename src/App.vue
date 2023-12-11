@@ -1,5 +1,5 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
+import WelcomeScreen from "./components/WelcomeScreen.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 </script>
 
