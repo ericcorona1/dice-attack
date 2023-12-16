@@ -6,7 +6,7 @@
       xmlns="http://www.w3.org/2000/svg"
     >
       <!-- D12 -->
-      <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="blue" />
+      <polygon points="50,5 95,30 77,95 23,95 5,30" fill="blue" />
     </svg>
   </div>
 </template>

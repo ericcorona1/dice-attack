@@ -5,8 +5,8 @@
       preserveAspectRatio="xMidYMid meet"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <!-- D8: Vertical Diamond -->
-      <polygon points="60,20 80,50 60,80 40,50" fill="blue" />
+      <!-- Responsive Text using em units for font-size and percentages for positioning -->
+      <text x="10" y="70" font-size="60" fill="blue">=</text>
     </svg>
   </div>
 </template>

@@ -6,7 +6,11 @@
       xmlns="http://www.w3.org/2000/svg"
     >
       <!-- D12: Pentagon -->
-      <polygon points="50,5 95,30 77,95 23,95 5,30" fill="blue" />
+      <polygon
+        points="60,20 80,50 60,80 40,50"
+        fill="blue"
+        transform="rotate(90, 50, 50)"
+      />
     </svg>
   </div>
 </template>
