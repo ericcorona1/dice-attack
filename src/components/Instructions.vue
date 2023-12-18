@@ -7,7 +7,8 @@ import Dice from "./Dice.vue";
     <header>
       <p>Destroy opponents dice</p>
     </header>
-    <Dice value="6" />
+    <Dice value="6" :selected-die="'D8'" />
+    <Dice value="14" :selected-die="'D20'" />
   </section>
 </template>
 

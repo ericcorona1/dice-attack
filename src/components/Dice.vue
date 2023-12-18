@@ -6,7 +6,7 @@ import D4 from "./icons/D4.vue";
 import D6 from "./icons/D6.vue";
 import D8 from "./icons/D8.vue";
 
-defineProps(["value"]);
+defineProps(["value", "selectedDie"]);
 
 const diceTypes = {
   D4,
@@ -16,13 +16,11 @@ const diceTypes = {
   D12,
   D20,
 };
-
-const selectedDie = "D10";
 </script>
 
 <template>
   <div class="dice">
     <p>{{ value }}</p>
-    <component :is="diceTypes[selectedDie]" />
+    <component :is="diceTypes[selectedDie]" :selectedDie="selectedDie" />
   </div>
 </template>

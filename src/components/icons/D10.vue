@@ -11,6 +11,13 @@
         fill="blue"
         transform="rotate(90, 50, 50)"
       />
+      <text
+        x="50%"
+        y="50%"
+        dominant-baseline="middle"
+        text-anchor="middle"
+        fill="white"
+      ></text>
     </svg>
   </div>
 </template>
