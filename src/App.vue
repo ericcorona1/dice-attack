@@ -1,5 +1,4 @@
 <script setup>
-import WelcomeScreen from "./components/WelcomeScreen.vue";
 import Instructions from "./components/Instructions.vue";
 </script>
 
