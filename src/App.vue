@@ -5,9 +5,7 @@ import Instructions from "./components/Instructions.vue";
 <template>
   <header></header>
 
-  <main>
-    <Instructions />
-  </main>
+  <main></main>
 </template>
 
 <style scoped></style>
