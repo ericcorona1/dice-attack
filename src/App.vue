@@ -5,7 +5,14 @@ import Instructions from "./components/Instructions.vue";
 <template>
   <header></header>
 
-  <main></main>
+  <main>
+    <WelcomeScreen />
+  </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+section {
+  border: 1px solid white;
+  padding: 5px;
+}
+</style>
