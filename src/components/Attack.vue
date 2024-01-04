@@ -1,3 +1,8 @@
+<script>
+import Dice from "./Dice.vue";
+import DiceSelectArea from "./DiceSelectArea.vue";
+</script>
+
 <template>
   <div class="pendingField">
     <div class="instructionText">
@@ -10,5 +15,12 @@
       <button>Continue</button>
     </div>
   </div>
-  <div class="selectionBox"></div>
+  <DiceSelectArea>
+    <Dice selected-die="D4" />
+    <Dice selected-die="D6" />
+    <Dice selected-die="D8" />
+    <Dice selected-die="D10" />
+    <Dice selected-die="D12" />
+    <Dice selected-die="D20" />
+  </DiceSelectArea>
 </template>

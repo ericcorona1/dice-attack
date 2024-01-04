@@ -1,6 +1,7 @@
 <script setup>
 import Instructions from "./components/Instructions.vue";
 import WelcomeScreen from "./components/WelcomeScreen.vue";
+import Attack from "./components/Attack.vue";
 </script>
 
 <template>
