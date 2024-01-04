@@ -7,7 +7,9 @@ import Attack from "./components/Attack.vue";
 <template>
   <header></header>
 
-  <main></main>
+  <main>
+    <Attack />
+  </main>
 </template>
 
 <style scoped>

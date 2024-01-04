@@ -1,4 +1,4 @@
-<script>
+<script setup>
 import Dice from "./Dice.vue";
 import DiceSelectArea from "./DiceSelectArea.vue";
 </script>
