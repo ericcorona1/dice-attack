@@ -46,6 +46,4 @@ import DiceSelectArea from "./DiceSelectArea.vue";
   max-width: 300px; /* Limit the maximum width for larger screens */
   margin: 0 auto; /* Center the SVG container */
 }
-.dice {
-}
 </style>
