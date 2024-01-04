@@ -24,3 +24,10 @@ const diceTypes = {
     <component :is="diceTypes[selectedDie]" :selectedDie="selectedDie" />
   </div>
 </template>
+
+<style>
+.dice {
+  background-color: white;
+  width: 70px;
+}
+</style>
