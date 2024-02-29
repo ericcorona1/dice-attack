@@ -5,7 +5,9 @@
     <h1>DICE ATTACK</h1>
     <div class="centerBtns">
       <div class="welcomeBtns">
-        <button>How to Play</button>
+        <a href="./components/Instructions.vue">
+          <button>How to Play</button>
+        </a>
         <button>Start</button>
       </div>
     </div>
