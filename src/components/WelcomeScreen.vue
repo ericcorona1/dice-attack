@@ -1,11 +1,15 @@
-<script setup></script>
+<script setup>
+import { store } from "./store";
+</script>
 
 <template>
   <section class="page welcome">
     <h1>DICE ATTACK</h1>
     <div class="centerBtns">
       <div class="welcomeBtns">
-        <button>How to Play</button>
+        <button @click="store.changeActiveMenu('instructions')">
+          How to Play
+        </button>
         <button>Start</button>
       </div>
     </div>

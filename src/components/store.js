@@ -5,4 +5,8 @@ export const store = reactive({
   changeActiveMenu(menu) {
     this.activeMenu = menu;
   },
+  isActive(menu) {
+    return this.activeMenu === menu;
+  },
+  //   if item is active menue then display, but if not then hide
 });
