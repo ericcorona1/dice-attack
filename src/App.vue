@@ -13,6 +13,7 @@ import { store } from "./components/store";
   <main>
     <WelcomeScreen v-if="store.isActive('welcome')" />
     <Instructions v-if="store.isActive('instructions')" />
+    <Attack v-if="store.isActive('attack')" />
   </main>
 </template>
 
