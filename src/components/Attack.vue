@@ -1,6 +1,7 @@
 <script setup>
 import Dice from "./Dice.vue";
 import DiceSelectArea from "./DiceSelectArea.vue";
+import { store } from "./store";
 </script>
 
 <template>
@@ -16,11 +17,23 @@ import DiceSelectArea from "./DiceSelectArea.vue";
     </div>
   </div>
   <DiceSelectArea>
-    <Dice selected-die="D4" />
-    <Dice selected-die="D6" />
-    <Dice selected-die="D8" />
-    <Dice selected-die="D10" />
-    <Dice selected-die="D12" />
-    <Dice selected-die="D20" />
+    <button @click="console.log('D4')">
+      <Dice selected-die="D4" />
+    </button>
+    <button @click="console.log('D6')">
+      <Dice selected-die="D6" />
+    </button>
+    <button @click="console.log('D8')">
+      <Dice selected-die="D8" />
+    </button>
+    <button @click="console.log('D10')">
+      <Dice selected-die="D10" />
+    </button>
+    <button @click="console.log('D12')">
+      <Dice selected-die="D12" />
+    </button>
+    <button @click="console.log('D20')">
+      <Dice selected-die="D20" />
+    </button>
   </DiceSelectArea>
 </template>

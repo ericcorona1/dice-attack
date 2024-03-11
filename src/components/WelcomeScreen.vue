@@ -10,7 +10,7 @@ import { store } from "./store";
         <button @click="store.changeActiveMenu('instructions')">
           How to Play
         </button>
-        <button>Start</button>
+        <button @click="store.changeActiveMenu('attack')">Start</button>
       </div>
     </div>
   </section>
