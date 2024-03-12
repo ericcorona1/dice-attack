@@ -17,6 +17,8 @@ import { store } from "./store";
     </div>
   </div>
   <DiceSelectArea>
+    <!-- This is where createDie will run -->
+    <!-- When selected, the die should be in the diceHoldingBox -->
     <button @click="console.log('D4')">
       <Dice selected-die="D4" />
     </button>
@@ -37,3 +39,9 @@ import { store } from "./store";
     </button>
   </DiceSelectArea>
 </template>
+<style scoped>
+.diceHoldingBox {
+  background-color: white;
+  height: 100px;
+}
+</style>

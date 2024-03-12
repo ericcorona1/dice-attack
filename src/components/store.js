@@ -8,5 +8,19 @@ export const store = reactive({
   isActive(menu) {
     return this.activeMenu === menu;
   },
-  //   if item is active menue then display, but if not then hide
+  createDie(id, faceValue) {
+    return {
+      id: id,
+      faceValue: faceValue,
+      value: 0,
+    };
+  },
+  addDieToPlayer(player) {
+    if (player.chosenDice.length < 6) {
+      // Limiting to 6 dice
+      player.chosenDice.push({ id: this.dieIdCounter++, faceValue: 1 });
+    } else {
+      console.log("Maximum limit of dice reached.");
+    }
+  },
 });
