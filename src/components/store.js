@@ -8,12 +8,12 @@ export const store = reactive({
   isActive(menu) {
     return this.activeMenu === menu;
   },
-  createDie(id, faceValue) {
-    return {
-      id: id,
+  createDie(faceValue) {
+    console.log({
+      id: 0,
       faceValue: faceValue,
       value: 0,
-    };
+    });
   },
   addDieToPlayer(player) {
     if (player.chosenDice.length < 6) {
