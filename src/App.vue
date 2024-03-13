@@ -18,4 +18,4 @@ import { store } from "./components/store";
 </template>
 
 <style scoped></style>
-./components/Select.vue
+./components/Select.vue./store/store

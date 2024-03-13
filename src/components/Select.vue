@@ -19,7 +19,12 @@ import { store } from "./store";
   <DiceSelectArea>
     <!-- This is where createDie will run -->
     <!-- When selected, the die should be in the diceHoldingBox -->
-    <button @click="store.createDie('D4')">
+    <button
+      @click="
+        store.addDieToPlayer('player1', 'D4'),
+          console.log(store.players.player1.chosenDice)
+      "
+    >
       <Dice selected-die="D4" />
     </button>
     <button @click="console.log('D6')">
@@ -46,3 +51,4 @@ import { store } from "./store";
   height: 100px;
 }
 </style>
+../store/store

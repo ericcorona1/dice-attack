@@ -51,3 +51,4 @@ import { store } from "./store";
   margin: 0 auto; /* Center the SVG container */
 }
 </style>
+../store/store
