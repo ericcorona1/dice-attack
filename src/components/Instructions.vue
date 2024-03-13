@@ -3,7 +3,7 @@ import Dice from "./Dice.vue";
 import GreaterThan from "./icons/GreaterThan.vue";
 import EqualTo from "./icons/EqualTo.vue";
 import DiceSelectArea from "./DiceSelectArea.vue";
-import { store } from "./store";
+import { store } from "../store/store";
 </script>
 
 <template>

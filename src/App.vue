@@ -4,7 +4,7 @@ import WelcomeScreen from "./components/WelcomeScreen.vue";
 import Select from "./components/Select.vue";
 import Play from "./components/Play.vue";
 import DisplayWinner from "./components/DisplayWinner.vue";
-import { store } from "./components/store";
+import { store } from "./store/store";
 </script>
 
 <template>

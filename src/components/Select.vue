@@ -1,7 +1,8 @@
 <script setup>
 import Dice from "./Dice.vue";
 import DiceSelectArea from "./DiceSelectArea.vue";
-import { store } from "./store";
+import { store } from "../store/store";
+import { addDieToPlayer } from "../utils/diceUtils";
 </script>
 
 <template>
@@ -21,8 +22,10 @@ import { store } from "./store";
     <!-- When selected, the die should be in the diceHoldingBox -->
     <button
       @click="
-        store.addDieToPlayer('player1', 'D4'),
-          console.log(store.players.player1.chosenDice)
+        addDieToPlayer('player1', 'D4'),
+          console.log(`Player1 dice
+          --------------------------------
+          ${JSON.stringify(store.players.player1.chosenDice)}`)
       "
     >
       <Dice selected-die="D4" />
