@@ -20,29 +20,22 @@ import { addDieToPlayer } from "../utils/diceUtils";
   <DiceSelectArea>
     <!-- This is where createDie will run -->
     <!-- When selected, the die should be in the diceHoldingBox -->
-    <button
-      @click="
-        addDieToPlayer('player1', 'D4'),
-          console.log(`Player1 dice
-          --------------------------------
-          ${JSON.stringify(store.players.player1.chosenDice)}`)
-      "
-    >
+    <button @click="addDieToPlayer('player1', 'D4')">
       <Dice selected-die="D4" />
     </button>
-    <button @click="console.log('D6')">
+    <button @click="addDieToPlayer('player1', 'D6')">
       <Dice selected-die="D6" />
     </button>
-    <button @click="console.log('D8')">
+    <button @click="addDieToPlayer('player1', 'D8')">
       <Dice selected-die="D8" />
     </button>
-    <button @click="console.log('D10')">
+    <button @click="addDieToPlayer('player1', 'D10')">
       <Dice selected-die="D10" />
     </button>
-    <button @click="console.log('D12')">
+    <button @click="addDieToPlayer('player1', 'D12')">
       <Dice selected-die="D12" />
     </button>
-    <button @click="console.log('D20')">
+    <button @click="addDieToPlayer('player1', 'D20')">
       <Dice selected-die="D20" />
     </button>
   </DiceSelectArea>
