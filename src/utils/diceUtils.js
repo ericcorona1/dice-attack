@@ -14,7 +14,7 @@ const extractMaxValueFromFaceValue = (faceValue) => {
 
 const rollDie = (faceValue) => {
   const maxValue = extractMaxValueFromFaceValue(faceValue);
-  return Math.floor(Math.random() * (maxValue + 1));
+  return Math.floor(Math.random() * maxValue) + 1;
 };
 
 const createDie = (faceValue) => {
