@@ -31,12 +31,13 @@ const createDie = (faceValue) => {
 // add die to player object
 export const addDieToPlayer = (playerKey, faceValue) => {
   const players = usePlayersStore();
-  const playerDice = players[playerKey];
-  const chosenDiceCopy = [...playerDice.chosenDice];
+  const playerProps = players[playerKey];
+  const playerDice = playerProps.chosenDice;
+  const chosenDiceCopy = [...playerDice];
   if (chosenDiceCopy.length < 6) {
     const newDie = createDie(faceValue);
     chosenDiceCopy.push(newDie);
-    player.chosenDice = chosenDiceCopy;
+    players[playerKey].chosenDice = chosenDiceCopy;
   } else {
     console.log("Maximum limit of dice reached.");
   }

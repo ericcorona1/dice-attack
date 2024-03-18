@@ -15,7 +15,7 @@ const fakedice = [
 ];
 
 const showPlayer1 = () => {
-  console.log(player1Dice);
+  console.log(players.player1.chosenDice);
 };
 </script>
 
@@ -71,4 +71,3 @@ li {
   height: 100px;
 }
 </style>
-../stores/store

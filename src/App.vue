@@ -6,7 +6,6 @@ import Play from "./components/Play.vue";
 import DisplayWinner from "./components/DisplayWinner.vue";
 import { useMenuStore } from "./stores/menu";
 const menu = useMenuStore();
-console.log(menu.activeMenu);
 </script>
 
 <template>
@@ -15,7 +14,7 @@ console.log(menu.activeMenu);
   <main>
     <WelcomeScreen v-if="menu.isActive('welcome')" />
     <Instructions v-if="menu.isActive('instructions')" />
-    <Select v-if="menu.isActive('select')"></Select>
+    <Select v-if="menu.isActive('select')" />
   </main>
 </template>
 
