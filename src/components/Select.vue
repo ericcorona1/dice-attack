@@ -54,6 +54,8 @@ const players = computed(() => playerStore.players);
 <style scoped>
 .diceHoldingBox {
   background-color: grey;
+  display: flex;
+  justify-content: space-around;
 }
 li {
   background-color: blue;
