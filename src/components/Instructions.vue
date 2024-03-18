@@ -3,7 +3,8 @@ import Dice from "./Dice.vue";
 import GreaterThan from "./icons/GreaterThan.vue";
 import EqualTo from "./icons/EqualTo.vue";
 import DiceSelectArea from "./DiceSelectArea.vue";
-import { store } from "../store/store";
+import { useMenuStore } from "../stores/menu";
+const activeMenu = useMenuStore();
 </script>
 
 <template>
@@ -37,7 +38,7 @@ import { store } from "../store/store";
         <Dice selected-die="D20" />
       </DiceSelectArea>
     </article>
-    <button @click="store.changeActiveMenu('welcome')">Home</button>
+    <button @click="activeMenu.changeActiveMenu('welcome')">Home</button>
   </div>
 </template>
 

@@ -1,10 +1,12 @@
 <script setup>
 import Dice from "./Dice.vue";
 import DiceSelectArea from "./DiceSelectArea.vue";
-import { store } from "../store/store";
 import { addDieToPlayer } from "../utils/diceUtils";
+import { usePlayersStore } from "../stores/players";
 
-const player1Dice = store.players.player1.chosenDice;
+const players = usePlayersStore();
+const player1Dice = players.player1.chosenDice;
+const player2Dice = players.player2.chosenDice;
 
 const fakedice = [
   { faceValue: "D4", rollValue: 3 },

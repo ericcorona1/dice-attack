@@ -1,5 +1,6 @@
 <script setup>
-import { store } from "../store/store";
+import { useMenuStore } from "../stores/menu";
+const activeMenu = useMenuStore();
 </script>
 
 <template>
@@ -7,10 +8,10 @@ import { store } from "../store/store";
     <h1>DICE ATTACK</h1>
     <div class="centerBtns">
       <div class="welcomeBtns">
-        <button @click="store.changeActiveMenu('instructions')">
+        <button @click="activeMenu.changeActiveMenu('instructions')">
           How to Play
         </button>
-        <button @click="store.changeActiveMenu('select')">Start</button>
+        <button @click="activeMenu.changeActiveMenu('select')">Start</button>
       </div>
     </div>
   </section>

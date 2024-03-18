@@ -1,4 +1,3 @@
-import { useMenuStore } from "../stores/menu";
 import { usePlayersStore } from "../stores/players";
 
 // create a die
@@ -31,10 +30,9 @@ const createDie = (faceValue) => {
 
 // add die to player object
 export const addDieToPlayer = (playerKey, faceValue) => {
-  const player = store.players[playerKey];
-  const player = usePlayersStore();
-  const chosenDiceCopy = [...player.chosenDice];
-  // const chosenDiceKeys = Object.keys(chosenDiceCopy);
+  const players = usePlayersStore();
+  const playerDice = players[playerKey];
+  const chosenDiceCopy = [...playerDice.chosenDice];
   if (chosenDiceCopy.length < 6) {
     const newDie = createDie(faceValue);
     chosenDiceCopy.push(newDie);
