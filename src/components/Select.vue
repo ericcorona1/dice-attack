@@ -1,21 +1,11 @@
 <script setup>
 import Dice from "./Dice.vue";
 import DiceSelectArea from "./DiceSelectArea.vue";
-// import { addDieToPlayer } from "../utils/diceUtils";
 import { usePlayersStore } from "../stores/players";
+import { computed } from "vue";
 
 const playerStore = usePlayersStore();
-// const player1Dice = playerStore.player1.chosenDice;
-
-const fakedice = [
-  { faceValue: "D4", rollValue: 3 },
-  { faceValue: "D12", rollValue: 1 },
-  { faceValue: "D8", rollValue: 7 },
-];
-
-const showPlayer1 = () => {
-  console.log(playerStore);
-};
+const players = computed(() => playerStore.players);
 </script>
 
 <template>
@@ -25,8 +15,11 @@ const showPlayer1 = () => {
       <h2>Player 1 May Re-roll 1 Die</h2>
     </div>
     <div class="diceHoldingBox">
+      <li v-for="item in players.player1.chosenDice">
+        face {{ item.faceValue }} - roll {{ item.rollValue }}
+      </li>
       <!-- <Dice
-        v-for="item in player1Dice"
+        v-for="item in diceArray"
         :selectedDie="item.faceValue"
         :value="item.rollValue"
       /> -->
