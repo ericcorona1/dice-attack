@@ -1,4 +1,5 @@
-import { store } from "../stores/store";
+import { useMenuStore } from "../stores/menu";
+import { usePlayersStore } from "../stores/players";
 
 // create a die
 const extractMaxValueFromFaceValue = (faceValue) => {
@@ -31,6 +32,7 @@ const createDie = (faceValue) => {
 // add die to player object
 export const addDieToPlayer = (playerKey, faceValue) => {
   const player = store.players[playerKey];
+  const player = usePlayersStore();
   const chosenDiceCopy = [...player.chosenDice];
   // const chosenDiceKeys = Object.keys(chosenDiceCopy);
   if (chosenDiceCopy.length < 6) {
