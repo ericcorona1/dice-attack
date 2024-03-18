@@ -15,14 +15,11 @@ const players = computed(() => playerStore.players);
       <h2>Player 1 May Re-roll 1 Die</h2>
     </div>
     <div class="diceHoldingBox">
-      <li v-for="item in players.player1.chosenDice">
-        face {{ item.faceValue }} - roll {{ item.rollValue }}
-      </li>
-      <!-- <Dice
-        v-for="item in diceArray"
+      <Dice
+        v-for="item in players.player1.chosenDice"
         :selectedDie="item.faceValue"
         :value="item.rollValue"
-      /> -->
+      />
     </div>
     <div class="confirmationBox">
       <button>Re-roll</button>
