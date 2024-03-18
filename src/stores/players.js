@@ -27,8 +27,7 @@ export const usePlayersStore = defineStore("players", () => {
   );
   function addDieToPlayer(playerKey, faceValue) {
     const playerDice = players[playerKey].chosenDice;
-    const chosenDiceCopy = [...playerDice];
-    if (chosenDiceCopy.length < 6) {
+    if (playerDice.length < 6) {
       const randomValue = rollDie(faceValue);
       faceValue.value = faceValue;
       rollValue.value = randomValue;
