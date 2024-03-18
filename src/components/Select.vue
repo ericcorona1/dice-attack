@@ -1,7 +1,7 @@
 <script setup>
 import Dice from "./Dice.vue";
 import DiceSelectArea from "./DiceSelectArea.vue";
-import { addDieToPlayer } from "../utils/diceUtils";
+// import { addDieToPlayer } from "../utils/diceUtils";
 import { usePlayersStore } from "../stores/players";
 
 const players = usePlayersStore();
@@ -41,22 +41,22 @@ const showPlayer1 = () => {
   <DiceSelectArea>
     <!-- This is where createDie will run -->
     <!-- When selected, the die should be in the diceHoldingBox -->
-    <button @click="addDieToPlayer('player1', 'D4')">
+    <button @click="players.addDieToPlayer('player1', 'D4')">
       <Dice selected-die="D4" />
     </button>
-    <button @click="addDieToPlayer('player1', 'D6')">
+    <button @click="players.addDieToPlayer('player1', 'D6')">
       <Dice selected-die="D6" />
     </button>
-    <button @click="addDieToPlayer('player1', 'D8')">
+    <button @click="players.addDieToPlayer('player1', 'D8')">
       <Dice selected-die="D8" />
     </button>
-    <button @click="addDieToPlayer('player1', 'D10')">
+    <button @click="players.addDieToPlayer('player1', 'D10')">
       <Dice selected-die="D10" />
     </button>
-    <button @click="addDieToPlayer('player1', 'D12')">
+    <button @click="players.addDieToPlayer('player1', 'D12')">
       <Dice selected-die="D12" />
     </button>
-    <button @click="addDieToPlayer('player1', 'D20')">
+    <button @click="players.addDieToPlayer('player1', 'D20')">
       <Dice selected-die="D20" />
     </button>
   </DiceSelectArea>
