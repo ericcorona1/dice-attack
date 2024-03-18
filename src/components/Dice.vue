@@ -12,9 +12,8 @@ import D20 from "./icons/D20.vue";
 import D4 from "./icons/D4.vue";
 import D6 from "./icons/D6.vue";
 import D8 from "./icons/D8.vue";
-import { defineProps } from "vue";
 
-defineProps(["value", "selectedDie"]);
+const props = defineProps({ value: Number, selectedDie: String });
 
 // Object mapping die names to their components
 const diceTypes = {

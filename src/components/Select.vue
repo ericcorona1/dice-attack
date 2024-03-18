@@ -3,6 +3,18 @@ import Dice from "./Dice.vue";
 import DiceSelectArea from "./DiceSelectArea.vue";
 import { store } from "../store/store";
 import { addDieToPlayer } from "../utils/diceUtils";
+
+const player1Dice = store.players.player1.chosenDice;
+
+const fakedice = [
+  { faceValue: "D4", rollValue: 3 },
+  { faceValue: "D12", rollValue: 1 },
+  { faceValue: "D8", rollValue: 7 },
+];
+
+const showPlayer1 = () => {
+  console.log(player1Dice);
+};
 </script>
 
 <template>
@@ -11,10 +23,17 @@ import { addDieToPlayer } from "../utils/diceUtils";
       <h2>Player 1 Select Dice</h2>
       <h2>Player 1 May Re-roll 1 Die</h2>
     </div>
-    <div class="diceHoldingBox"></div>
+    <div class="diceHoldingBox">
+      <Dice
+        v-for="item in player1Dice"
+        :selectedDie="item.faceValue"
+        :value="item.rollValue"
+      />
+    </div>
     <div class="confirmationBox">
       <button>Re-roll</button>
       <button>Continue</button>
+      <button @click="showPlayer1">Show Player 1</button>
     </div>
   </div>
   <DiceSelectArea>
@@ -43,8 +62,11 @@ import { addDieToPlayer } from "../utils/diceUtils";
 
 <style scoped>
 .diceHoldingBox {
-  background-color: white;
+  background-color: grey;
+}
+li {
+  background-color: blue;
   height: 100px;
 }
 </style>
-../store/store
+../stores/store

@@ -45,4 +45,4 @@ button {
   font-size: calc(1vw + 1em);
 }
 </style>
-../store/store
+../store/store ../stores/store

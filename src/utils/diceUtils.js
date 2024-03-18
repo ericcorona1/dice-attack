@@ -1,4 +1,4 @@
-import { store } from "../store/store";
+import { store } from "../stores/store";
 
 // create a die
 const extractMaxValueFromFaceValue = (faceValue) => {
@@ -19,23 +19,23 @@ const rollDie = (faceValue) => {
 
 const createDie = (faceValue) => {
   const randomValue = rollDie(faceValue);
-  console.log(`random value
-  ---------------------------------------
-  ${randomValue}`);
-  return {
-    faceValue: faceValue,
-    rollValue: randomValue,
+  const die = {
+    faceValue: String,
+    rollValue: Number,
   };
+  die.faceValue = faceValue;
+  die.rollValue = randomValue;
+  return die;
 };
 
 // add die to player object
 export const addDieToPlayer = (playerKey, faceValue) => {
   const player = store.players[playerKey];
-  const chosenDiceCopy = { ...player.chosenDice };
-  const chosenDiceKeys = Object.keys(chosenDiceCopy);
-  if (chosenDiceKeys.length < 6) {
-    const newDieKey = chosenDiceKeys.length + 1;
-    chosenDiceCopy[newDieKey] = createDie(faceValue);
+  const chosenDiceCopy = [...player.chosenDice];
+  // const chosenDiceKeys = Object.keys(chosenDiceCopy);
+  if (chosenDiceCopy.length < 6) {
+    const newDie = createDie(faceValue);
+    chosenDiceCopy.push(newDie);
     player.chosenDice = chosenDiceCopy;
   } else {
     console.log("Maximum limit of dice reached.");
