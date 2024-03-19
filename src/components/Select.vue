@@ -5,8 +5,10 @@ import { usePlayersStore } from "../stores/players";
 import { computed } from "vue";
 
 const playerStore = usePlayersStore();
-const players = computed(() => playerStore.players);
-const player1Turn = computed(() => playerStore.player1Turn);
+const updatedPlayers = playerStore.updatedPlayers;
+const player1TurnCheck = playerStore.player1TurnCheck;
+
+// I need to bring in the computeds from playerstore and create an activePlayer
 </script>
 
 <template>

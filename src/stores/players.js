@@ -22,6 +22,9 @@ export const usePlayersStore = defineStore("players", () => {
 
   const updatedPlayers = computed(() => playerStore.players);
   const player1TurnCheck = computed(() => playerStore.player1Turn);
+  const activePlayer = computed(() =>
+    player1TurnCheck ? "player1" : "player2"
+  );
 
   function addDieToPlayer(playerKey, faceValue) {
     const player = players.value[playerKey];
@@ -55,5 +58,6 @@ export const usePlayersStore = defineStore("players", () => {
     player1TurnCheck,
     toggleTurn,
     updatedPlayers,
+    activePlayer,
   };
 });
