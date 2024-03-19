@@ -6,7 +6,7 @@ import { computed } from "vue";
 
 const playerStore = usePlayersStore();
 const players = computed(() => playerStore.players);
-const activePlayer = computed(() => playerStore.player1Turn);
+const player1Turn = computed(() => playerStore.player1Turn);
 </script>
 
 <template>
@@ -17,13 +17,13 @@ const activePlayer = computed(() => playerStore.player1Turn);
     </div>
     <div class="diceHoldingBox">
       <Dice
-        v-if="activePlayer"
+        v-if="player1Turn"
         v-for="item in players.player1.chosenDice"
         :selectedDie="item.faceValue"
         :value="item.rollValue"
       />
       <Dice
-        v-if="!activePlayer"
+        v-if="!player1Turn"
         v-for="item in players.player2.chosenDice"
         :selectedDie="item.faceValue"
         :value="item.rollValue"

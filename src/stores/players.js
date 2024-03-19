@@ -20,6 +20,9 @@ export const usePlayersStore = defineStore("players", () => {
     },
   });
 
+  const updatedPlayers = computed(() => playerStore.players);
+  const player1TurnCheck = computed(() => playerStore.player1Turn);
+
   function addDieToPlayer(playerKey, faceValue) {
     const player = players.value[playerKey];
     const playerDice = player.chosenDice;
@@ -46,5 +49,11 @@ export const usePlayersStore = defineStore("players", () => {
     return (player1Turn.value = !player1Turn.value);
   }
 
-  return { players, addDieToPlayer, player1Turn, toggleTurn };
+  return {
+    players,
+    addDieToPlayer,
+    player1TurnCheck,
+    toggleTurn,
+    updatedPlayers,
+  };
 });
