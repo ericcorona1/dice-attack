@@ -3,6 +3,7 @@ import { rollDie } from "../utils/diceUtils";
 import { ref } from "vue";
 
 export const usePlayersStore = defineStore("players", () => {
+  const player1Turn = ref(0);
   const players = ref({
     player1: {
       chosenDice: {},
@@ -41,5 +42,5 @@ export const usePlayersStore = defineStore("players", () => {
     }
   }
 
-  return { players, addDieToPlayer };
+  return { players, addDieToPlayer, player1Turn };
 });
