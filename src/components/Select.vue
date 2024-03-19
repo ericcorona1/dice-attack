@@ -6,6 +6,7 @@ import { computed } from "vue";
 
 const playerStore = usePlayersStore();
 const players = computed(() => playerStore.players);
+const activePlayer = computed(() => playerStore.player1Turn);
 </script>
 
 <template>
@@ -16,15 +17,21 @@ const players = computed(() => playerStore.players);
     </div>
     <div class="diceHoldingBox">
       <Dice
+        v-if="activePlayer"
         v-for="item in players.player1.chosenDice"
+        :selectedDie="item.faceValue"
+        :value="item.rollValue"
+      />
+      <Dice
+        v-if="!activePlayer"
+        v-for="item in players.player2.chosenDice"
         :selectedDie="item.faceValue"
         :value="item.rollValue"
       />
     </div>
     <div class="confirmationBox">
       <button>Re-roll</button>
-      <button>Continue</button>
-      <button @click="showPlayer1">Show Player 1</button>
+      <button @click="playerStore.toggleTurn()">Continue</button>
     </div>
   </div>
   <DiceSelectArea>

@@ -3,7 +3,7 @@ import { rollDie } from "../utils/diceUtils";
 import { ref } from "vue";
 
 export const usePlayersStore = defineStore("players", () => {
-  const player1Turn = ref(0);
+  const player1Turn = ref(true);
   const players = ref({
     player1: {
       chosenDice: {},
@@ -41,6 +41,10 @@ export const usePlayersStore = defineStore("players", () => {
       alert("Maximum limit of dice reached.");
     }
   }
+  function toggleTurn() {
+    console.log(player1Turn.value);
+    return (player1Turn.value = !player1Turn.value);
+  }
 
-  return { players, addDieToPlayer, player1Turn };
+  return { players, addDieToPlayer, player1Turn, toggleTurn };
 });
