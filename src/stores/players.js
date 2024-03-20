@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { rollDie } from "../utils/diceUtils";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 export const usePlayersStore = defineStore("players", () => {
   const player1Turn = ref(true);
@@ -20,10 +20,13 @@ export const usePlayersStore = defineStore("players", () => {
     },
   });
 
-  const updatedPlayers = computed(() => playerStore.players);
-  const player1TurnCheck = computed(() => playerStore.player1Turn);
+  //   const updatedPlayers = computed(() => players.value);
+  //   const player1TurnCheck = computed(() => player1Turn.value);
+  //   const activePlayer = computed(() =>
+  //     player1TurnCheck.value ? "Player 1" : "Player 2"
+  //   );
   const activePlayer = computed(() =>
-    player1TurnCheck ? "player1" : "player2"
+    player1Turn.value ? "Player 1" : "Player 2"
   );
 
   function addDieToPlayer(playerKey, faceValue) {
@@ -55,9 +58,8 @@ export const usePlayersStore = defineStore("players", () => {
   return {
     players,
     addDieToPlayer,
-    player1TurnCheck,
     toggleTurn,
-    updatedPlayers,
     activePlayer,
+    player1Turn,
   };
 });

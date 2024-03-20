@@ -2,11 +2,14 @@
 import Dice from "./Dice.vue";
 import DiceSelectArea from "./DiceSelectArea.vue";
 import { usePlayersStore } from "../stores/players";
-import { computed } from "vue";
+import { storeToRefs } from "pinia";
 
 const playerStore = usePlayersStore();
-const updatedPlayers = playerStore.updatedPlayers;
-const player1TurnCheck = playerStore.player1TurnCheck;
+const { players, activePlayer, player1Turn } = storeToRefs(playerStore);
+const { addDieToPlayer, toggleTurn } = playerStore;
+// const updatedPlayers = playerStore.updatedPlayers;
+// const player1Turn = playerStore.player1TurnCheck;
+// const activePlayer = playerStore.activePlayer;
 
 // I need to bring in the computeds from playerstore and create an activePlayer
 </script>
@@ -14,8 +17,8 @@ const player1TurnCheck = playerStore.player1TurnCheck;
 <template>
   <div class="pendingField">
     <div class="instructionText">
-      <h2>Player 1 Select Dice</h2>
-      <h2>Player 1 May Re-roll 1 Die</h2>
+      <h2>{{ activePlayer }} Select Dice</h2>
+      <h2>{{ activePlayer }} 1 May Re-roll 1 Die</h2>
     </div>
     <div class="diceHoldingBox">
       <Dice
@@ -33,28 +36,28 @@ const player1TurnCheck = playerStore.player1TurnCheck;
     </div>
     <div class="confirmationBox">
       <button>Re-roll</button>
-      <button @click="playerStore.toggleTurn()">Continue</button>
+      <button @click="toggleTurn()">Continue</button>
     </div>
   </div>
   <DiceSelectArea>
     <!-- This is where createDie will run -->
     <!-- When selected, the die should be in the diceHoldingBox -->
-    <button @click="playerStore.addDieToPlayer('player1', 'D4')">
+    <button @click="addDieToPlayer('player1', 'D4')">
       <Dice selected-die="D4" />
     </button>
-    <button @click="playerStore.addDieToPlayer('player1', 'D6')">
+    <button @click="addDieToPlayer('player1', 'D6')">
       <Dice selected-die="D6" />
     </button>
-    <button @click="playerStore.addDieToPlayer('player1', 'D8')">
+    <button @click="addDieToPlayer('player1', 'D8')">
       <Dice selected-die="D8" />
     </button>
-    <button @click="playerStore.addDieToPlayer('player1', 'D10')">
+    <button @click="addDieToPlayer('player1', 'D10')">
       <Dice selected-die="D10" />
     </button>
-    <button @click="playerStore.addDieToPlayer('player1', 'D12')">
+    <button @click="addDieToPlayer('player1', 'D12')">
       <Dice selected-die="D12" />
     </button>
-    <button @click="playerStore.addDieToPlayer('player1', 'D20')">
+    <button @click="addDieToPlayer('player1', 'D20')">
       <Dice selected-die="D20" />
     </button>
   </DiceSelectArea>
