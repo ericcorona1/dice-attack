@@ -8,10 +8,12 @@ export const usePlayersStore = defineStore("players", () => {
     player1: {
       chosenDice: {},
       remainingDice: {},
+      reRoll: false,
     },
     player2: {
       chosenDice: {},
       remainingDice: {},
+      reRoll: false,
     },
   });
   const activePlayer = computed(() =>
