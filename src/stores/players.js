@@ -10,12 +10,7 @@ export const usePlayersStore = defineStore("players", () => {
       remainingDice: {},
     },
     player2: {
-      chosenDice: {
-        1: { faceValue: "D4", rollValue: 3 },
-        2: { faceValue: "D12", rollValue: 1 },
-        3: { faceValue: "D8", rollValue: 7 },
-        4: { faceValue: "D8", rollValue: 5 },
-      },
+      chosenDice: {},
       remainingDice: {},
     },
   });
