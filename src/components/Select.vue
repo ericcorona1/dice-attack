@@ -24,12 +24,9 @@ const { addDieToPlayer, toggleTurn } = playerStore;
       <button v-if="player1Turn" v-for="item in players.player1.chosenDice">
         <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
       </button>
-      <Dice
-        v-if="!player1Turn"
-        v-for="item in players.player2.chosenDice"
-        :selectedDie="item.faceValue"
-        :value="item.rollValue"
-      />
+      <button v-if="!player1Turn" v-for="item in players.player2.chosenDice">
+        <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+      </button>
     </div>
     <div class="confirmationBox">
       <button>Re-roll</button>
