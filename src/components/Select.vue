@@ -21,12 +21,9 @@ const { addDieToPlayer, toggleTurn } = playerStore;
       <h2>{{ activePlayer }} May Re-roll 1 Die</h2>
     </div>
     <div class="diceHoldingBox">
-      <Dice
-        v-if="player1Turn"
-        v-for="item in players.player1.chosenDice"
-        :selectedDie="item.faceValue"
-        :value="item.rollValue"
-      />
+      <button v-if="player1Turn" v-for="item in players.player1.chosenDice">
+        <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+      </button>
       <Dice
         v-if="!player1Turn"
         v-for="item in players.player2.chosenDice"

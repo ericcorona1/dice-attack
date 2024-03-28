@@ -14,12 +14,6 @@ export const usePlayersStore = defineStore("players", () => {
       remainingDice: {},
     },
   });
-
-  //   const updatedPlayers = computed(() => players.value);
-  //   const player1TurnCheck = computed(() => player1Turn.value);
-  //   const activePlayer = computed(() =>
-  //     player1TurnCheck.value ? "Player 1" : "Player 2"
-  //   );
   const activePlayer = computed(() =>
     player1Turn.value ? "Player 1" : "Player 2"
   );
