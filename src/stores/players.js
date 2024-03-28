@@ -29,22 +29,18 @@ export const usePlayersStore = defineStore("players", () => {
     player1Turn.value ? "Player 1" : "Player 2"
   );
 
-  function addDieToPlayer(playerKey, faceValue) {
-    const player = players.value[playerKey];
-    const playerDice = player.chosenDice;
-    const playerDiceLength = Object.keys(playerDice).length;
-    if (playerDiceLength < 6) {
-      const id = playerDiceLength + 1;
+  function addDieToPlayer(faceValue) {
+    const activePlayer = player1Turn.value
+      ? players.value.player1
+      : players.value.player2;
+    const activePlayerDice = activePlayer.chosenDice;
+    const activePlayerDiceLength = Object.keys(activePlayerDice).length;
+    if (activePlayerDiceLength < 6) {
+      const id = activePlayerDiceLength + 1;
       const randomValue = rollDie(faceValue);
-      players.value[playerKey] = {
-        ...player,
-        chosenDice: {
-          ...playerDice,
-          [id]: {
-            faceValue: faceValue,
-            rollValue: randomValue,
-          },
-        },
+      activePlayer.chosenDice[id] = {
+        faceValue: faceValue,
+        rollValue: randomValue,
       };
     } else {
       alert("Maximum limit of dice reached.");
