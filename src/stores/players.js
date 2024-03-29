@@ -38,8 +38,10 @@ export const usePlayersStore = defineStore("players", () => {
     }
   }
   function toggleTurn() {
-    console.log(player1Turn.value);
     return (player1Turn.value = !player1Turn.value);
+  }
+  function reRollDie() {
+    console.log("Hey");
   }
 
   return {
@@ -48,5 +50,6 @@ export const usePlayersStore = defineStore("players", () => {
     toggleTurn,
     activePlayer,
     player1Turn,
+    reRollDie,
   };
 });

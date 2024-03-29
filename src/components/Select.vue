@@ -6,12 +6,7 @@ import { storeToRefs } from "pinia";
 
 const playerStore = usePlayersStore();
 const { players, activePlayer, player1Turn } = storeToRefs(playerStore);
-const { addDieToPlayer, toggleTurn } = playerStore;
-// const updatedPlayers = playerStore.updatedPlayers;
-// const player1Turn = playerStore.player1TurnCheck;
-// const activePlayer = playerStore.activePlayer;
-
-// I need to bring in the computeds from playerstore and create an activePlayer
+const { addDieToPlayer, toggleTurn, reRollDie } = playerStore;
 </script>
 
 <template>
@@ -21,7 +16,11 @@ const { addDieToPlayer, toggleTurn } = playerStore;
       <h2>{{ activePlayer }} May Re-roll 1 Die</h2>
     </div>
     <div class="diceHoldingBox">
-      <button v-if="player1Turn" v-for="item in players.player1.chosenDice">
+      <button
+        @click="reRollDie"
+        v-if="player1Turn"
+        v-for="item in players.player1.chosenDice"
+      >
         <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
       </button>
       <button v-if="!player1Turn" v-for="item in players.player2.chosenDice">
