@@ -42,7 +42,10 @@ export const usePlayersStore = defineStore("players", () => {
   }
   function reRollDie(key, selectedDie) {
     const { faceValue } = selectedDie;
-    console.log(key, faceValue);
+    const activePlayer = player1Turn.value
+      ? players.value.player1
+      : players.value.player2;
+    console.log(activePlayer);
     activePlayer.chosenDice[key].rollValue = rollDie(faceValue);
   }
 
