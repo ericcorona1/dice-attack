@@ -45,8 +45,12 @@ export const usePlayersStore = defineStore("players", () => {
     const activePlayer = player1Turn.value
       ? players.value.player1
       : players.value.player2;
-    activePlayer.chosenDice[key].rollValue = rollDie(faceValue);
-    activePlayer.reRoll = true;
+    if (!activePlayer.reRoll) {
+      activePlayer.chosenDice[key].rollValue = rollDie(faceValue);
+      activePlayer.reRoll = true;
+    } else {
+      console.log("You can't re-roll more than once");
+    }
   }
 
   return {
