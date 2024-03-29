@@ -23,7 +23,11 @@ const { addDieToPlayer, toggleTurn, reRollDie } = playerStore;
       >
         <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
       </button>
-      <button v-if="!player1Turn" v-for="item in players.player2.chosenDice">
+      <button
+        v-if="!player1Turn"
+        v-for="(item, key) in players.player2.chosenDice"
+        @click="reRollDie(key, item)"
+      >
         <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
       </button>
     </div>
