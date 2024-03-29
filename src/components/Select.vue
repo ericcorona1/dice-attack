@@ -15,7 +15,6 @@ const { addDieToPlayer, toggleTurn, reRollDie } = playerStore;
     <div class="instructionText">
       <h2>{{ activePlayer }} Select Dice</h2>
       <h2>{{ activePlayer }} May Re-roll 1 Die</h2>
-      <p>{{ activePlayerFormatted }}</p>
     </div>
     <div class="diceHoldingBox">
       <button
