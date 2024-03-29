@@ -5,7 +5,7 @@ import { usePlayersStore } from "../stores/players";
 import { storeToRefs } from "pinia";
 
 const playerStore = usePlayersStore();
-const { players, activePlayer, activePlayerFormatted, player1Turn } =
+const { players, activePlayer, activePlayerFormatted } =
   storeToRefs(playerStore);
 const { addDieToPlayer, toggleTurn, reRollDie } = playerStore;
 </script>
@@ -24,20 +24,6 @@ const { addDieToPlayer, toggleTurn, reRollDie } = playerStore;
       >
         <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
       </button>
-      <!-- <button
-        v-if="player1Turn"
-        v-for="(item, key) in players.player1.chosenDice"
-        @click="reRollDie(key, item)"
-      >
-        <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-      </button>
-      <button
-        v-if="!player1Turn"
-        v-for="(item, key) in players.player2.chosenDice"
-        @click="reRollDie(key, item)"
-      >
-        <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-      </button> -->
     </div>
     <div class="confirmationBox">
       <button>Re-roll</button>
