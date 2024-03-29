@@ -40,7 +40,7 @@ export const usePlayersStore = defineStore("players", () => {
   function toggleTurn() {
     return (player1Turn.value = !player1Turn.value);
   }
-  function reRollDie() {
+  function reRollDie(selectedDie) {
     console.log("Hey");
   }
 
