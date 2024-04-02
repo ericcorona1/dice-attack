@@ -3,9 +3,8 @@ import { rollDie } from "../utils/diceUtils";
 import { ref, computed } from "vue";
 import { useMenuStore } from "./menu";
 
-const { changeActiveMenu } = useMenuStore;
-
 export const usePlayersStore = defineStore("players", () => {
+  const menuStore = useMenuStore();
   const player1Turn = ref(true);
   const players = ref({
     player1: {
@@ -59,16 +58,18 @@ export const usePlayersStore = defineStore("players", () => {
       console.log("You can't re-roll more than once");
     }
   }
+
   function selectPhaseCompleted() {
     const player1 = players.value.player1;
-    const player2 = plyaers.value.player2;
-    const activePlayer = player1Turn.value
-      ? players.value.player1
-      : players.value.player2;
-    const activePlayerSelectionPhase = activePlayer.selectPhaseComplete;
-    activePlayerSelectionPhase = !activePlayerSelectionPhase;
+    const player2 = players.value.player2;
+    const activePlayer = player1Turn.value ? player1 : player2;
+
+    // Update the selectPhaseComplete property of the active player
+    activePlayer.selectPhaseComplete = !activePlayer.selectPhaseComplete;
+
+    // Check if both players have completed the selection phase
     if (player1.selectPhaseComplete && player2.selectPhaseComplete) {
-      changeActiveMenu("play");
+      menuStore.changeActiveMenu("play");
     }
   }
 

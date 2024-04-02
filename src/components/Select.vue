@@ -33,7 +33,14 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
     </div>
     <div class="confirmationBox">
       <button>Re-roll</button>
-      <button @click="toggleTurn(), selectPhaseCompleted()">Continue</button>
+      <button
+        @click="
+          toggleTurn();
+          selectPhaseCompleted();
+        "
+      >
+        Continue
+      </button>
     </div>
   </div>
   <DiceSelectArea>
