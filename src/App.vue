@@ -15,6 +15,7 @@ const menu = useMenuStore();
     <WelcomeScreen v-if="menu.isActive('welcome')" />
     <Instructions v-if="menu.isActive('instructions')" />
     <Select v-if="menu.isActive('select')" />
+    <Play v-if="menu.isActive('play')" />
   </main>
 </template>
 

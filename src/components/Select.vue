@@ -7,14 +7,21 @@ import { storeToRefs } from "pinia";
 const playerStore = usePlayersStore();
 const { players, activePlayer, activePlayerFormatted } =
   storeToRefs(playerStore);
-const { addDieToPlayer, toggleTurn, reRollDie } = playerStore;
+const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
+  playerStore;
 </script>
 
 <template>
   <div class="pendingField">
     <div class="instructionText">
       <h2>{{ activePlayer }} Select Dice</h2>
-      <h2>{{ activePlayer }} May Re-roll 1 Die</h2>
+      <h2
+        v-if="
+          Object.keys(players[activePlayerFormatted].chosenDice).length == 6
+        "
+      >
+        {{ activePlayer }} May Re-roll 1 Die
+      </h2>
     </div>
     <div class="diceHoldingBox">
       <button
@@ -26,7 +33,7 @@ const { addDieToPlayer, toggleTurn, reRollDie } = playerStore;
     </div>
     <div class="confirmationBox">
       <button>Re-roll</button>
-      <button @click="toggleTurn()">Continue</button>
+      <button @click="toggleTurn(), selectPhaseCompleted()">Continue</button>
     </div>
   </div>
   <DiceSelectArea>

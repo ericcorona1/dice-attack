@@ -1,6 +1,9 @@
 import { defineStore } from "pinia";
 import { rollDie } from "../utils/diceUtils";
 import { ref, computed } from "vue";
+import { useMenuStore } from "./menu";
+
+const { changeActiveMenu } = useMenuStore;
 
 export const usePlayersStore = defineStore("players", () => {
   const player1Turn = ref(true);
@@ -9,11 +12,13 @@ export const usePlayersStore = defineStore("players", () => {
       chosenDice: {},
       remainingDice: {},
       reRoll: false,
+      selectPhaseComplete: false,
     },
     player2: {
       chosenDice: {},
       remainingDice: {},
       reRoll: false,
+      selectPhaseComplete: false,
     },
   });
   const activePlayer = computed(() =>
@@ -54,6 +59,18 @@ export const usePlayersStore = defineStore("players", () => {
       console.log("You can't re-roll more than once");
     }
   }
+  function selectPhaseCompleted() {
+    const player1 = players.value.player1;
+    const player2 = plyaers.value.player2;
+    const activePlayer = player1Turn.value
+      ? players.value.player1
+      : players.value.player2;
+    const activePlayerSelectionPhase = activePlayer.selectPhaseComplete;
+    activePlayerSelectionPhase = !activePlayerSelectionPhase;
+    if (player1.selectPhaseComplete && player2.selectPhaseComplete) {
+      changeActiveMenu("play");
+    }
+  }
 
   return {
     players,
@@ -63,5 +80,6 @@ export const usePlayersStore = defineStore("players", () => {
     activePlayerFormatted,
     player1Turn,
     reRollDie,
+    selectPhaseCompleted,
   };
 });

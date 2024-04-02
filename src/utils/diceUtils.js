@@ -1,5 +1,3 @@
-// import { usePlayersStore } from "../stores/players";
-
 // create a die
 const extractMaxValueFromFaceValue = (faceValue) => {
   // Extract the number part from the string
