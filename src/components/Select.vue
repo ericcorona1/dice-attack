@@ -32,8 +32,11 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
       </button>
     </div>
     <div class="confirmationBox">
-      <button>Re-roll</button>
+      <!-- <button>Re-roll</button> -->
       <button
+        v-if="
+          Object.keys(players[activePlayerFormatted].chosenDice).length == 6
+        "
         @click="
           toggleTurn();
           selectPhaseCompleted();
@@ -44,8 +47,6 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
     </div>
   </div>
   <DiceSelectArea>
-    <!-- This is where createDie will run -->
-    <!-- When selected, the die should be in the diceHoldingBox -->
     <button @click="addDieToPlayer('D4')">
       <Dice selected-die="D4" />
     </button>
