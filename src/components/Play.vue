@@ -1,6 +1,13 @@
 <script>
 import Dice from "./Dice.vue";
 import DiceSelectArea from "./DiceSelectArea.vue";
+import { usePlayersStore } from "../stores/players";
+import { storeToRefs } from "pinia";
+
+const playerStore = usePlayersStore();
+const { players, activePlayer, activePlayerFormatted } =
+  storeToRefs(playerStore);
+const { toggleTurn, reRollDie } = playerStore;
 </script>
 
 <template>
@@ -17,6 +24,12 @@ import DiceSelectArea from "./DiceSelectArea.vue";
     </div>
     <div class="activeDice">
       <button>This is where active dice should be</button>
+      <button
+        v-for="(item, key) in players[activePlayerFormatted].chosenDice"
+        @click="reRollDie(key, item)"
+      >
+        <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+      </button>
     </div>
   </div>
 
