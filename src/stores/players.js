@@ -21,9 +21,18 @@ export const usePlayersStore = defineStore("players", () => {
   const activePlayer = computed(() =>
     player1Turn.value ? "Player 1" : "Player 2"
   );
+  const inactivePlayer = computed(() =>
+    player1Turn.value ? "Player 2" : "Player 1"
+  );
+
   const activePlayerFormatted = computed(() =>
     activePlayer.value.replace(/\s/g, "").toLowerCase()
   );
+
+  const inactivePlayerFormatted = computed(() =>
+    inactivePlayer.value.replace(/\s/g, "").toLowerCase()
+  );
+
   function addDieToPlayer(faceValue) {
     const activePlayer = player1Turn.value
       ? players.value.player1
@@ -81,5 +90,7 @@ export const usePlayersStore = defineStore("players", () => {
     player1Turn,
     reRollDie,
     selectPhaseCompleted,
+    inactivePlayer,
+    inactivePlayerFormatted,
   };
 });
