@@ -9,13 +9,11 @@ export const usePlayersStore = defineStore("players", () => {
   const players = ref({
     player1: {
       chosenDice: {},
-      remainingDice: {},
       reRoll: false,
       selectPhaseComplete: false,
     },
     player2: {
       chosenDice: {},
-      remainingDice: {},
       reRoll: false,
       selectPhaseComplete: false,
     },
@@ -38,6 +36,7 @@ export const usePlayersStore = defineStore("players", () => {
       activePlayer.chosenDice[id] = {
         faceValue: faceValue,
         rollValue: randomValue,
+        active: true,
       };
     } else {
       alert("Maximum limit of dice reached.");
