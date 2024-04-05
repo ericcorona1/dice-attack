@@ -4,8 +4,8 @@ import { ref } from "vue";
 export const useAttackingDefendingDiceStore = defineStore(
   "attackingDefendingDice",
   () => {
-    const attackingDice = ref([]);
-    const defendingDice = ref([]);
+    const attackingDice = ref({});
+    const defendingDice = ref({});
 
     function copyDiceFromPlayerToAttacking(playerDice) {
       // Logic to copy dice from player to attacking dice
