@@ -1,5 +1,9 @@
-import { defineStore } from "pinia";
+import { defineStore, storeToRefs } from "pinia";
 import { ref } from "vue";
+import { usePlayersStore } from "./players";
+
+const playerStore = usePlayersStore();
+const { players, player1Turn } = playerStore;
 
 export const useAttackingDefendingDiceStore = defineStore(
   "attackingDefendingDice",
@@ -7,8 +11,22 @@ export const useAttackingDefendingDiceStore = defineStore(
     const attackingDice = ref({});
     const defendingDice = ref({});
 
-    function copyDiceFromPlayerToAttacking(playerDice) {
-      // Logic to copy dice from player to attacking dice
+    // Logic to copy dice from player to attacking dice
+    function moveDiceToAttackingDefending(key) {
+      const activePlayer = player1Turn.value
+        ? players.value.player1
+        : players.value.player2;
+      const inactivePlayer = player1Turn.value
+        ? players.value.player2
+        : players.value.player1;
+      const id = key;
+      if (player1Turn.value) {
+        attackingDice[id] = { ...activePlayer.chosenDice[id] };
+        return attackingDice[id];
+      } else {
+        defendingDice[id] = { ...inactivePlayer.chosenDice[id] };
+        return defendingDice[id];
+      }
     }
 
     function copyDiceFromPlayerToDefending(playerDice) {
