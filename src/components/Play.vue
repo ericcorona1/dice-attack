@@ -1,8 +1,9 @@
 <script setup>
 import Dice from "./Dice.vue";
 import DiceSelectArea from "./DiceSelectArea.vue";
-import { usePlayersStore } from "../stores/players";
 import { storeToRefs } from "pinia";
+import { usePlayersStore } from "../stores/players";
+import { useAttackingDefendingDiceStore } from "../stores/attackingDefendingDice";
 
 const playerStore = usePlayersStore();
 const {
@@ -13,6 +14,10 @@ const {
   inactivePlayerFormatted,
 } = storeToRefs(playerStore);
 const { toggleTurn, reRollDie } = playerStore;
+
+const attackingDefendingStore = useAttackingDefendingDiceStore();
+const { attackingDice, defendingDice } = storeToRefs(attackingDefendingStore);
+const { moveDiceToAttackingDefending } = attackingDefendingStore;
 </script>
 
 <template>
@@ -35,7 +40,8 @@ const { toggleTurn, reRollDie } = playerStore;
       <h2>instructions for the active player</h2>
     </div>
     <div class="activeDice">
-      <button>This is where active dice should be</button>
+      <div class="attacking">{{ attackingDice }}</div>
+      <div class="defending"></div>
     </div>
   </div>
 

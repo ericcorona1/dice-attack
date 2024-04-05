@@ -1,14 +1,12 @@
-import { defineStore, storeToRefs } from "pinia";
+import { defineStore } from "pinia";
 import { ref } from "vue";
 import { usePlayersStore } from "./players";
-
-const playerStore = usePlayersStore();
-const { players, player1Turn } = playerStore;
 
 export const useAttackingDefendingDiceStore = defineStore(
   "attackingDefendingDice",
   () => {
-    const attackingDice = ref({});
+    const playerStore = usePlayersStore();
+    const attackingDice = ref({ 1: "hey", 2: "bye" });
     const defendingDice = ref({});
 
     // Logic to copy dice from player to attacking dice
@@ -46,8 +44,7 @@ export const useAttackingDefendingDiceStore = defineStore(
     return {
       attackingDice,
       defendingDice,
-      copyDiceFromPlayerToAttacking,
-      copyDiceFromPlayerToDefending,
+      moveDiceToAttackingDefending,
       modifyAttackingDice,
       modifyDefendingDice,
       // Other properties and methods
