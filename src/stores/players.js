@@ -5,7 +5,9 @@ import { useMenuStore } from "./menu";
 
 export const usePlayersStore = defineStore("players", () => {
   const menuStore = useMenuStore();
+  // check if player 1 turn
   const player1Turn = ref(true);
+  // initiate players
   const players = ref({
     player1: {
       chosenDice: {},
@@ -18,13 +20,14 @@ export const usePlayersStore = defineStore("players", () => {
       selectPhaseComplete: false,
     },
   });
+  // check active and inactive players
   const activePlayer = computed(() =>
     player1Turn.value ? "Player 1" : "Player 2"
   );
   const inactivePlayer = computed(() =>
     player1Turn.value ? "Player 2" : "Player 1"
   );
-
+  // remove space and lowercase for proper object reference
   const activePlayerFormatted = computed(() =>
     activePlayer.value.replace(/\s/g, "").toLowerCase()
   );
@@ -32,7 +35,7 @@ export const usePlayersStore = defineStore("players", () => {
   const inactivePlayerFormatted = computed(() =>
     inactivePlayer.value.replace(/\s/g, "").toLowerCase()
   );
-
+  // add die in the select phase
   function addDieToPlayer(faceValue) {
     const activePlayer = player1Turn.value
       ? players.value.player1
@@ -51,9 +54,11 @@ export const usePlayersStore = defineStore("players", () => {
       alert("Maximum limit of dice reached.");
     }
   }
+  // used for both select phase and play phase
   function toggleTurn() {
     return (player1Turn.value = !player1Turn.value);
   }
+  // can only use once in select, then once per turn in play phase
   function reRollDie(key, selectedDie) {
     const { faceValue } = selectedDie;
     const activePlayer = player1Turn.value
@@ -66,7 +71,7 @@ export const usePlayersStore = defineStore("players", () => {
       console.log("You can't re-roll more than once");
     }
   }
-
+  // indicate that select phase is completed
   function selectPhaseCompleted() {
     const player1 = players.value.player1;
     const player2 = players.value.player2;
