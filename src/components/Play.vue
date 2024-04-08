@@ -28,7 +28,7 @@ const { moveDiceToAttackingDefending } = attackingDefendingStore;
       <h2>{{ inactivePlayer }}</h2>
       <button
         v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
-        @click="reRollDie(key, item)"
+        @click="moveDiceToAttackingDefending(key)"
       >
         <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
       </button>
@@ -40,8 +40,10 @@ const { moveDiceToAttackingDefending } = attackingDefendingStore;
       <h2>instructions for the active player</h2>
     </div>
     <div class="activeDice">
-      <div class="attacking">{{ attackingDice }}</div>
-      <div class="defending"></div>
+      <div class="attacking" v-for="(item, key) in attackingDice">
+        <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+      </div>
+      <div class="defending">{{ defendingDice }}</div>
     </div>
   </div>
 
@@ -53,7 +55,7 @@ const { moveDiceToAttackingDefending } = attackingDefendingStore;
     <h2>{{ activePlayer }}</h2>
     <button
       v-for="(item, key) in players[activePlayerFormatted].chosenDice"
-      @click="reRollDie(key, item)"
+      @click="moveDiceToAttackingDefending(key)"
     >
       <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
     </button>
