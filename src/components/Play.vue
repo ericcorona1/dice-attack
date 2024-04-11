@@ -80,8 +80,15 @@ const { moveDiceToAttackingDefending } = attackingDefendingStore;
 }
 .activeDice {
   background-color: red;
-  width: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
+
+.pending {
+  border: solid 5px blue;
+}
+
 .attackingDiceBox {
   background-color: brown;
   height: 100px;

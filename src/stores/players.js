@@ -13,11 +13,13 @@ export const usePlayersStore = defineStore("players", () => {
       chosenDice: {},
       reRoll: false,
       selectPhaseComplete: false,
+      highlighted: false,
     },
     player2: {
       chosenDice: {},
       reRoll: false,
       selectPhaseComplete: false,
+      highlighted: false,
     },
   });
   // check active and inactive players
