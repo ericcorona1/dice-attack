@@ -50,7 +50,7 @@ const { moveDiceToAttackingDefending } = attackingDefendingStore;
       </div>
     </div>
   </div>
-
+  <!-- Now I need to create a button to make inactive die that lose -->
   <!-- attacking -->
   <DiceSelectArea>
     <div class="attackingDiceBox">
