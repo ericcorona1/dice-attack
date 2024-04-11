@@ -20,13 +20,13 @@ export const useAttackingDefendingDiceStore = defineStore(
         : players.value.player1;
       const id = key;
       if (player1Turn.value) {
-        attackingDice[id] = { ...activePlayer.chosenDice[id] };
+        attackingDice.value[id] = { ...activePlayer.chosenDice[id] };
         console.log(attackingDice);
-        return attackingDice[id];
+        return attackingDice.value[id];
       } else {
-        defendingDice[id] = { ...inactivePlayer.chosenDice[id] };
+        defendingDice.value[id] = { ...inactivePlayer.chosenDice[id] };
         console.log(defendingDice);
-        return defendingDice[id];
+        return defendingDice.value[id];
       }
     }
 

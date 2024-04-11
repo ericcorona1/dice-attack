@@ -34,6 +34,7 @@ const { moveDiceToAttackingDefending } = attackingDefendingStore;
       </button>
     </div>
   </DiceSelectArea>
+
   <!-- Active Dice Field -->
   <div class="targetDiceBox">
     <div class="targetInstructions">
@@ -43,7 +44,9 @@ const { moveDiceToAttackingDefending } = attackingDefendingStore;
       <div class="attacking" v-for="(item, key) in attackingDice">
         <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
       </div>
-      <div class="defending">{{ defendingDice }}</div>
+      <div class="defending" v-for="(item, key) in defendingDice">
+        <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+      </div>
     </div>
   </div>
 
