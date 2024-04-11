@@ -11,7 +11,7 @@ export const useAttackingDefendingDiceStore = defineStore(
     const defendingDice = ref({});
 
     // Logic to copy dice from player to attacking dice
-    function moveDiceToAttackingDefending(key) {
+    function moveDiceToAttackingDefending(key, player) {
       const activePlayer = player1Turn.value
         ? players.value.player1
         : players.value.player2;
@@ -19,19 +19,14 @@ export const useAttackingDefendingDiceStore = defineStore(
         ? players.value.player2
         : players.value.player1;
       const id = key;
-      if (player1Turn.value) {
+      console.log(player);
+      if (player === "player1") {
         attackingDice.value[id] = { ...activePlayer.chosenDice[id] };
-        console.log(attackingDice);
         return attackingDice.value[id];
       } else {
         defendingDice.value[id] = { ...inactivePlayer.chosenDice[id] };
-        console.log(defendingDice);
         return defendingDice.value[id];
       }
-    }
-
-    function copyDiceFromPlayerToDefending(playerDice) {
-      // Logic to copy dice from player to defending dice
     }
 
     function modifyAttackingDice() {
