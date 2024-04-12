@@ -1,5 +1,5 @@
 import { defineStore, storeToRefs } from "pinia";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { usePlayersStore } from "./players";
 
 export const useAttackingDefendingDiceStore = defineStore(
@@ -8,7 +8,16 @@ export const useAttackingDefendingDiceStore = defineStore(
     const playerStore = usePlayersStore();
     const { players, player1Turn } = storeToRefs(playerStore);
     const attackingDice = ref({});
+    const attackingTotal = computed(() => {
+      let total = 0;
+      for (const key in attackingDice.value) {
+        const currentValue = attackingDice.value[key].rollValue;
+        total += currentValue;
+      }
+      return total;
+    });
     const defendingDice = ref({});
+    const defendingTotal = ref(0);
 
     // Logic to copy dice from player to attacking dice
     function moveDiceToAttackingDefending(key, player) {
@@ -41,6 +50,7 @@ export const useAttackingDefendingDiceStore = defineStore(
 
     return {
       attackingDice,
+      attackingTotal,
       defendingDice,
       moveDiceToAttackingDefending,
       modifyAttackingDice,

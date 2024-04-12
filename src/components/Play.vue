@@ -16,7 +16,9 @@ const {
 const { toggleTurn, reRollDie } = playerStore;
 
 const attackingDefendingStore = useAttackingDefendingDiceStore();
-const { attackingDice, defendingDice } = storeToRefs(attackingDefendingStore);
+const { attackingDice, defendingDice, attackingTotal } = storeToRefs(
+  attackingDefendingStore
+);
 const { moveDiceToAttackingDefending } = attackingDefendingStore;
 </script>
 
@@ -41,8 +43,14 @@ const { moveDiceToAttackingDefending } = attackingDefendingStore;
       <h2>instructions for the active player</h2>
     </div>
     <div class="activeDice">
-      <div class="attacking" v-for="(item, key) in attackingDice">
-        <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+      <div class="attackingContainer">
+        <div class="attacking" v-for="(item, key) in attackingDice">
+          <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+        </div>
+        <div class="total">
+          <h2>Total</h2>
+          <h2>{{ attackingTotal }}</h2>
+        </div>
       </div>
       <div class="divider"></div>
       <div class="defending" v-for="(item, key) in defendingDice">
