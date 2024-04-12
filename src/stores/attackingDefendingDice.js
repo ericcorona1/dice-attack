@@ -17,8 +17,14 @@ export const useAttackingDefendingDiceStore = defineStore(
       return total;
     });
     const defendingDice = ref({});
-    const defendingTotal = ref(0);
-
+    const defendingTotal = computed(() => {
+      let total = 0;
+      for (const key in defendingDice.value) {
+        const currentValue = defendingDice.value[key].rollValue;
+        total += currentValue;
+      }
+      return total;
+    });
     // Logic to copy dice from player to attacking dice
     function moveDiceToAttackingDefending(key, player) {
       const activePlayer = player1Turn.value
@@ -52,6 +58,7 @@ export const useAttackingDefendingDiceStore = defineStore(
       attackingDice,
       attackingTotal,
       defendingDice,
+      defendingTotal,
       moveDiceToAttackingDefending,
       modifyAttackingDice,
       modifyDefendingDice,
