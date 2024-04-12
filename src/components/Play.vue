@@ -49,7 +49,6 @@ const { moveDiceToAttackingDefending, removeDie } = attackingDefendingStore;
           v-for="(item, key) in attackingDice"
           @click="removeDie(attackingDice, key)"
         >
-          <h1>{{ key }}</h1>
           <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
         </button>
         <div class="total">
@@ -59,9 +58,13 @@ const { moveDiceToAttackingDefending, removeDie } = attackingDefendingStore;
       </div>
       <div class="divider"></div>
       <div class="defendingContainer">
-        <div class="defending" v-for="(item, key) in defendingDice">
+        <button
+          class="defending"
+          v-for="(item, key) in defendingDice"
+          @click="removeDie(defendingDice, key)"
+        >
           <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-        </div>
+        </button>
         <div class="total">
           <h2>Total</h2>
           <p>{{ defendingTotal }}</p>
