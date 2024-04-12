@@ -18,7 +18,7 @@ const { toggleTurn, reRollDie } = playerStore;
 const attackingDefendingStore = useAttackingDefendingDiceStore();
 const { attackingDice, defendingDice, attackingTotal, defendingTotal } =
   storeToRefs(attackingDefendingStore);
-const { moveDiceToAttackingDefending } = attackingDefendingStore;
+const { moveDiceToAttackingDefending, removeDie } = attackingDefendingStore;
 </script>
 
 <template>
@@ -40,12 +40,18 @@ const { moveDiceToAttackingDefending } = attackingDefendingStore;
   <div class="targetDiceBox">
     <div class="targetInstructions">
       <h2>instructions for the active player</h2>
+      <p>Click active die to remove</p>
     </div>
     <div class="activeDice">
       <div class="attackingContainer">
-        <div class="attacking" v-for="(item, key) in attackingDice">
+        <button
+          class="attacking"
+          v-for="(item, key) in attackingDice"
+          @click="removeDie(attackingDice, key)"
+        >
+          <h1>{{ key }}</h1>
           <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-        </div>
+        </button>
         <div class="total">
           <h2>Total</h2>
           <p>{{ attackingTotal }}</p>

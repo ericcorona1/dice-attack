@@ -45,6 +45,7 @@ export const useAttackingDefendingDiceStore = defineStore(
     }
 
     function removeDie(obj, key) {
+      console.log(obj, key);
       if (obj.hasOwnProperty(key)) {
         delete obj[key];
         return true; // Return true if the key-value pair was removed
@@ -65,7 +66,7 @@ export const useAttackingDefendingDiceStore = defineStore(
       defendingDice,
       defendingTotal,
       moveDiceToAttackingDefending,
-      modifyAttackingDice,
+      removeDie,
       modifyDefendingDice,
       // Other properties and methods
     };
