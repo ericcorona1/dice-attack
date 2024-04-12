@@ -34,11 +34,10 @@ export const useAttackingDefendingDiceStore = defineStore(
         ? players.value.player2
         : players.value.player1;
       const id = key;
-      console.log(player);
       if (player === "player1") {
         attackingDice.value[id] = { ...activePlayer.chosenDice[id] };
         return attackingDice.value[id];
-      } else {
+      } else if (Object.keys(defendingDice.value).length < 1) {
         defendingDice.value[id] = { ...inactivePlayer.chosenDice[id] };
         return defendingDice.value[id];
       }
