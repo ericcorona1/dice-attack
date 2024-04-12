@@ -44,8 +44,13 @@ export const useAttackingDefendingDiceStore = defineStore(
       }
     }
 
-    function modifyAttackingDice() {
-      // Logic to modify attacking dice
+    function removeDie(obj, key) {
+      if (obj.hasOwnProperty(key)) {
+        delete obj[key];
+        return true; // Return true if the key-value pair was removed
+      } else {
+        return false; // Return false if the key does not exist in the object
+      }
     }
 
     function modifyDefendingDice() {
