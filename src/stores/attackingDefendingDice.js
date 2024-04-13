@@ -53,8 +53,19 @@ export const useAttackingDefendingDiceStore = defineStore(
       }
     }
 
-    function modifyDefendingDice() {
-      // Logic to modify defending dice
+    function activeDiceCheck() {
+      // Logic to see if active player can defeat inactive player
+      const attackingLength = Object.keys(attackingDice.value).length;
+      const defendingLength = Object.keys(defendingDice.value).length;
+
+      if (defendingLength > 0) {
+        if (attackingLength === 1) {
+          return attackingTotal.value > defendingTotal.value;
+        } else if (attackingLength > 1) {
+          return attackingTotal.value === defendingTotal.value;
+        }
+      }
+      return false;
     }
 
     // Other methods as needed
@@ -66,7 +77,7 @@ export const useAttackingDefendingDiceStore = defineStore(
       defendingTotal,
       moveDiceToAttackingDefending,
       removeDie,
-      modifyDefendingDice,
+      activeDiceCheck,
       // Other properties and methods
     };
   }

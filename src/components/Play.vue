@@ -4,6 +4,7 @@ import DiceSelectArea from "./DiceSelectArea.vue";
 import { storeToRefs } from "pinia";
 import { usePlayersStore } from "../stores/players";
 import { useAttackingDefendingDiceStore } from "../stores/attackingDefendingDice";
+import { computed } from "vue";
 
 const playerStore = usePlayersStore();
 const {
@@ -18,7 +19,8 @@ const { toggleTurn, reRollDie } = playerStore;
 const attackingDefendingStore = useAttackingDefendingDiceStore();
 const { attackingDice, defendingDice, attackingTotal, defendingTotal } =
   storeToRefs(attackingDefendingStore);
-const { moveDiceToAttackingDefending, removeDie } = attackingDefendingStore;
+const { moveDiceToAttackingDefending, removeDie, activeDiceCheck } =
+  attackingDefendingStore;
 </script>
 
 <template>
@@ -73,6 +75,9 @@ const { moveDiceToAttackingDefending, removeDie } = attackingDefendingStore;
     </div>
   </div>
   <!-- Now I need to create a button to make inactive die that lose -->
+  <div class="buttonContainer">
+    <button v-if="activeDiceCheck()">Continue</button>
+  </div>
   <!-- attacking -->
   <DiceSelectArea>
     <div class="attackingDiceBox">
