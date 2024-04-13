@@ -41,7 +41,8 @@ const { moveDiceToAttackingDefending, removeDie, activeDiceCheck } =
   <!-- Active Dice Field -->
   <div class="targetDiceBox">
     <div class="targetInstructions">
-      <h2>instructions for the active player</h2>
+      <p>1 Attacking die must be larger than 1 defending die</p>
+      <p>2+ Attacking die must be equal to 1 defending die</p>
       <p>Click active die to remove</p>
     </div>
     <div class="activeDice">

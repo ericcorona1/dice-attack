@@ -25,6 +25,7 @@ export const useAttackingDefendingDiceStore = defineStore(
       }
       return total;
     });
+
     // Logic to copy dice from player to attacking dice
     function moveDiceToAttackingDefending(key, player) {
       const activePlayer = player1Turn.value
@@ -47,14 +48,14 @@ export const useAttackingDefendingDiceStore = defineStore(
       console.log(obj, key);
       if (obj.hasOwnProperty(key)) {
         delete obj[key];
-        return true; // Return true if the key-value pair was removed
+        return true;
       } else {
-        return false; // Return false if the key does not exist in the object
+        return false;
       }
     }
 
+    // Logic to see if active player can defeat inactive player
     function activeDiceCheck() {
-      // Logic to see if active player can defeat inactive player
       const attackingLength = Object.keys(attackingDice.value).length;
       const defendingLength = Object.keys(defendingDice.value).length;
 
@@ -68,7 +69,12 @@ export const useAttackingDefendingDiceStore = defineStore(
       return false;
     }
 
-    // Other methods as needed
+    function inactiveDie(key) {
+      const inactivePlayer = player1Turn.value
+        ? players.value.player2
+        : players.value.player1;
+      return inactivePlayer.chosenDice[key].active == false;
+    }
 
     return {
       attackingDice,
