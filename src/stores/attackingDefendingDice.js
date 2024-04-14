@@ -82,6 +82,11 @@ export const useAttackingDefendingDiceStore = defineStore(
       return (inactivePlayer.chosenDice[key].active = false);
     }
 
+    function resetAtackingDefending() {
+      attackingDice.value = {};
+      defendingDice.value = {};
+    }
+
     return {
       attackingDice,
       attackingTotal,
@@ -93,6 +98,7 @@ export const useAttackingDefendingDiceStore = defineStore(
       activeDiceCheck,
       setInactiveDieKey,
       inactiveDie,
+      resetAtackingDefending,
       // Other properties and methods
     };
   }

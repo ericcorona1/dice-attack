@@ -30,6 +30,7 @@ const {
   activeDiceCheck,
   setInactiveDieKey,
   inactiveDie,
+  resetAtackingDefending,
 } = attackingDefendingStore;
 </script>
 
@@ -102,7 +103,10 @@ const {
   </div>
   <!-- Now I need to create a button to make inactive die that lose -->
   <div class="buttonContainer">
-    <button v-if="activeDiceCheck()" @click="inactiveDie(), toggleTurn()">
+    <button
+      v-if="activeDiceCheck()"
+      @click="inactiveDie(), toggleTurn(), resetAtackingDefending()"
+    >
       Continue
     </button>
   </div>
