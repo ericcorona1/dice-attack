@@ -36,9 +36,9 @@ const {
 <template>
   <!-- defending -->
   <DiceSelectArea>
+    <h2>defending</h2>
+    <h2>{{ inactivePlayer }}</h2>
     <div class="defendingDiceBox">
-      <h2>defending</h2>
-      <h2>{{ inactivePlayer }}</h2>
       <template
         v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
       >
@@ -52,12 +52,12 @@ const {
         >
           <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
         </button>
+        <!-- Render inactive dice differently here -->
         <template v-else>
-          <!-- Render inactive dice differently here -->
           <Dice
+            class="inactive"
             :selectedDie="item.faceValue"
             :value="item.rollValue"
-            class="inactive"
           />
         </template>
       </template>
@@ -133,8 +133,11 @@ const {
 <style>
 .defendingDiceBox {
   background-color: pink;
-  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
+
 .targetDiceBox {
   background-color: blueviolet;
 }
