@@ -25,6 +25,7 @@ export const useAttackingDefendingDiceStore = defineStore(
       }
       return total;
     });
+    const activeDieKeys = ref([]);
     const inactiveDieKey = ref("");
 
     // Logic to copy dice from player to attacking dice
@@ -74,6 +75,11 @@ export const useAttackingDefendingDiceStore = defineStore(
       return (inactiveDieKey.value = key);
     }
 
+    function setActiveDieKeys(key) {
+      activeDieKeys.value.push(key);
+      return activeDieKeys;
+    }
+
     function inactiveDie() {
       const inactivePlayer = player1Turn.value
         ? players.value.player2
@@ -92,11 +98,13 @@ export const useAttackingDefendingDiceStore = defineStore(
       attackingTotal,
       defendingDice,
       defendingTotal,
+      activeDieKeys,
       inactiveDieKey,
       moveDiceToAttackingDefending,
       removeDie,
       activeDiceCheck,
       setInactiveDieKey,
+      setActiveDieKeys,
       inactiveDie,
       resetAtackingDefending,
       // Other properties and methods

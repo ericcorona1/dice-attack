@@ -58,19 +58,29 @@ export const usePlayersStore = defineStore("players", () => {
   }
   // used for both select phase and play phase
   function toggleTurn() {
+    console.log(
+      player1Turn.value ? "new turn for Player2" : "new turn for Player1"
+    );
     return (player1Turn.value = !player1Turn.value);
   }
   // can only use once in select, then once per turn in play phase
-  function reRollDie(key, selectedDie) {
-    const { faceValue } = selectedDie;
+  function reRollDie(keys) {
     const activePlayer = player1Turn.value
       ? players.value.player1
       : players.value.player2;
-    if (!activePlayer.reRoll) {
-      activePlayer.chosenDice[key].rollValue = rollDie(faceValue);
-      activePlayer.reRoll = true;
-    } else {
-      console.log("You can't re-roll more than once");
+    for (const key of keys) {
+      const faceValue = activePlayer.chosenDice[key].faceValue;
+      if (menuStore.isActive("select")) {
+        if (!activePlayer.reRoll) {
+          activePlayer.chosenDice[key].rollValue = rollDie(faceValue);
+          activePlayer.reRoll = true;
+        } else {
+          console.log("You can't re-roll more than once");
+        }
+      } else {
+        const reRolledDie = rollDie(faceValue);
+        activePlayer.chosenDice[key].rollValue = reRolledDie;
+      }
     }
   }
   // indicate that select phase is completed

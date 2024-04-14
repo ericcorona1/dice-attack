@@ -22,6 +22,7 @@ const {
   defendingDice,
   attackingTotal,
   defendingTotal,
+  activeDieKeys,
   inactiveDieKey,
 } = storeToRefs(attackingDefendingStore);
 const {
@@ -29,6 +30,7 @@ const {
   removeDie,
   activeDiceCheck,
   setInactiveDieKey,
+  setActiveDieKeys,
   inactiveDie,
   resetAtackingDefending,
 } = attackingDefendingStore;
@@ -105,7 +107,12 @@ const {
   <div class="buttonContainer">
     <button
       v-if="activeDiceCheck()"
-      @click="inactiveDie(), toggleTurn(), resetAtackingDefending()"
+      @click="
+        inactiveDie(),
+          toggleTurn(),
+          resetAtackingDefending(),
+          reRollDie(activeDieKeys)
+      "
     >
       Continue
     </button>
@@ -121,7 +128,10 @@ const {
       >
         <button
           v-if="item.active"
-          @click="moveDiceToAttackingDefending(key, activePlayerFormatted)"
+          @click="
+            moveDiceToAttackingDefending(key, activePlayerFormatted),
+              setActiveDieKeys(key)
+          "
         >
           <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
         </button>
