@@ -103,30 +103,34 @@ const {
   </div>
   <!-- Now I need to create a button to make inactive die that lose -->
   <div class="buttonContainer">
-    <button v-if="activeDiceCheck()" @click="inactiveDie()">Continue</button>
+    <button v-if="activeDiceCheck()" @click="inactiveDie(), toggleTurn()">
+      Continue
+    </button>
   </div>
   <!-- attacking -->
   <DiceSelectArea>
-    <div class="attackingDiceBox">
-      <h2>attacking</h2>
-    </div>
+    <h2>attacking</h2>
     <h2>{{ activePlayer }}</h2>
-    <template v-for="(item, key) in players[activePlayerFormatted].chosenDice">
-      <button
-        v-if="item.active"
-        @click="moveDiceToAttackingDefending(key, activePlayerFormatted)"
+    <div class="attackingDiceBox">
+      <template
+        v-for="(item, key) in players[activePlayerFormatted].chosenDice"
       >
-        <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-      </button>
-      <template v-else>
-        <!-- Render inactive dice differently here -->
-        <Dice
-          :selectedDie="item.faceValue"
-          :value="item.rollValue"
-          class="inactive"
-        />
+        <button
+          v-if="item.active"
+          @click="moveDiceToAttackingDefending(key, activePlayerFormatted)"
+        >
+          <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+        </button>
+        <template v-else>
+          <!-- Render inactive dice differently here -->
+          <Dice
+            :selectedDie="item.faceValue"
+            :value="item.rollValue"
+            class="inactive"
+          />
+        </template>
       </template>
-    </template>
+    </div>
   </DiceSelectArea>
 </template>
 
@@ -158,6 +162,8 @@ const {
 
 .attackingDiceBox {
   background-color: brown;
-  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 </style>
