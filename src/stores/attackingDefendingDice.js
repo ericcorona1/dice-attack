@@ -25,6 +25,7 @@ export const useAttackingDefendingDiceStore = defineStore(
       }
       return total;
     });
+    const inactiveDieKey = ref("");
 
     // Logic to copy dice from player to attacking dice
     function moveDiceToAttackingDefending(key, player) {
@@ -69,11 +70,16 @@ export const useAttackingDefendingDiceStore = defineStore(
       return false;
     }
 
-    function inactiveDie(key) {
+    function setInactiveDieKey(key) {
+      return (inactiveDieKey.value = key);
+    }
+
+    function inactiveDie() {
       const inactivePlayer = player1Turn.value
         ? players.value.player2
         : players.value.player1;
-      return inactivePlayer.chosenDice[key].active == false;
+      const key = inactiveDieKey.value;
+      return (inactivePlayer.chosenDice[key].active = false);
     }
 
     return {
@@ -81,9 +87,12 @@ export const useAttackingDefendingDiceStore = defineStore(
       attackingTotal,
       defendingDice,
       defendingTotal,
+      inactiveDieKey,
       moveDiceToAttackingDefending,
       removeDie,
       activeDiceCheck,
+      setInactiveDieKey,
+      inactiveDie,
       // Other properties and methods
     };
   }
