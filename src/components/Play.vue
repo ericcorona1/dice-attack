@@ -109,9 +109,9 @@ const {
       v-if="activeDiceCheck()"
       @click="
         inactiveDie(),
+          reRollDie(activeDieKeys),
           toggleTurn(),
-          resetAtackingDefending(),
-          reRollDie(activeDieKeys)
+          resetAtackingDefending()
       "
     >
       Continue
