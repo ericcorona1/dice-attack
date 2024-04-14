@@ -109,6 +109,7 @@ const {
     >
       Continue
     </button>
+    <!-- Winning attacking die should reroll -->
   </div>
   <!-- attacking -->
   <DiceSelectArea>
