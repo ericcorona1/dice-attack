@@ -46,8 +46,7 @@ const {
           v-if="item.active"
           @click="
             moveDiceToAttackingDefending(key, inactivePlayerFormatted),
-              setInactiveDieKey(key),
-              console.log(`key: ${key}`)
+              setInactiveDieKey(key)
           "
         >
           <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
