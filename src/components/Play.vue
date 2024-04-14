@@ -147,17 +147,12 @@ const {
 }
 .targetInstructions {
   background-color: blue;
-  height: 100px;
 }
 .activeDice {
   background-color: red;
   width: 100%;
   display: flex;
   justify-content: space-around;
-}
-
-.pending {
-  border: solid 5px blue;
 }
 
 .attackingDiceBox {
