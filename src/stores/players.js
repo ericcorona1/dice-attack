@@ -98,6 +98,23 @@ export const usePlayersStore = defineStore("players", () => {
     }
   }
 
+  function checkWinner() {
+    const player1 = players.value.player1;
+    const player2 = players.value.player2;
+    const inactivePlayer = player1Turn.value ? player2 : player1;
+    const inactivePlayerDice = inactivePlayer.chosenDice;
+    const allInactive = Object.values(inactivePlayerDice).every(
+      (die) => !die.active
+    );
+
+    console.log(`All are not active: ${allInactive}`);
+    // If all dice are inactive, set the active menu to indicate the winning player
+    if (allInactive) {
+      // Assuming you have a method to change the active menu
+      menuStore.changeActiveMenu("winner");
+    }
+  }
+
   return {
     players,
     addDieToPlayer,
@@ -109,5 +126,6 @@ export const usePlayersStore = defineStore("players", () => {
     selectPhaseCompleted,
     inactivePlayer,
     inactivePlayerFormatted,
+    checkWinner,
   };
 });

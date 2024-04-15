@@ -14,7 +14,7 @@ const {
   inactivePlayer,
   inactivePlayerFormatted,
 } = storeToRefs(playerStore);
-const { toggleTurn, reRollDie } = playerStore;
+const { toggleTurn, reRollDie, checkWinner } = playerStore;
 
 const attackingDefendingStore = useAttackingDefendingDiceStore();
 const {
@@ -101,12 +101,13 @@ const {
       </div>
     </div>
   </div>
-  <!-- Now I need to create a button to make inactive die that lose -->
+  <!-- Toggle and win check -->
   <div class="buttonContainer">
     <button
       v-if="activeDiceCheck()"
       @click="
         inactiveDie(),
+          checkWinner(),
           reRollDie(activeDieKeys),
           toggleTurn(),
           resetAtackingDefending()

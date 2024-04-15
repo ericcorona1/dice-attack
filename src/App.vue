@@ -16,6 +16,7 @@ const menu = useMenuStore();
     <Instructions v-if="menu.isActive('instructions')" />
     <Select v-if="menu.isActive('select')" />
     <Play v-if="menu.isActive('play')" />
+    <DisplayWinner v-if="menu.isActive('winner')" />
   </main>
 </template>
 
