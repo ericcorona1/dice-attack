@@ -116,6 +116,12 @@ const {
     >
       Continue
     </button>
+    <button
+      v-if="Object.keys(attackingDice).length === 1"
+      @click="reRollDie(activeDieKeys), toggleTurn(), resetAtackingDefending()"
+    >
+      Skip
+    </button>
     <!-- Winning attacking die should reroll -->
   </div>
   <!-- attacking -->
