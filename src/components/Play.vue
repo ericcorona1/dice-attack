@@ -39,8 +39,7 @@ const {
 <template>
   <!-- defending -->
   <DiceSelectArea>
-    <h2>defending</h2>
-    <h2>{{ inactivePlayer }}</h2>
+    <h2>Defending: {{ inactivePlayer }}</h2>
     <div class="defendingDiceBox">
       <template
         v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
@@ -69,9 +68,8 @@ const {
   <!-- Active Dice Field -->
   <div class="targetDiceBox">
     <div class="targetInstructions">
-      <p>1 Attacking die must be larger than 1 defending die</p>
-      <p>2+ Attacking die must be equal to 1 defending die</p>
-      <p>Click active die to remove</p>
+      <p>1 attack die > defend die || 2+ attack die = 1 defend die</p>
+      <p>Click active die to remove || Click 1 die and skip to re-roll</p>
     </div>
     <div class="activeDice">
       <div class="attackingContainer">
@@ -126,8 +124,7 @@ const {
   </div>
   <!-- attacking -->
   <DiceSelectArea>
-    <h2>attacking</h2>
-    <h2>{{ activePlayer }}</h2>
+    <h2>Attacking: {{ activePlayer }}</h2>
     <div class="attackingDiceBox">
       <template
         v-for="(item, key) in players[activePlayerFormatted].chosenDice"
