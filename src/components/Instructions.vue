@@ -13,18 +13,20 @@ const activeMenu = useMenuStore();
       <header>
         <h2>Destroy opponents dice</h2>
       </header>
-      <div>
-        <h3>Greater Than Attack</h3>
+      <h3>Greater Than Attack</h3>
+      <div class="attackType">
         <Dice :value="11" selected-die="D12" />
-        <GreaterThan />
+        <!-- <GreaterThan /> -->
+        <p>></p>
         <Dice :value="6" selected-die="D20" />
       </div>
-      <div>
-        <h3>Equal To Attack</h3>
+      <h3>Equal To Attack</h3>
+      <div class="attackType">
         <Dice :value="8" selected-die="D12" />
         <Dice :value="6" selected-die="D6" />
         <Dice :value="2" selected-die="D4" />
-        <EqualTo />
+        <!-- <EqualTo /> -->
+        <p>=</p>
         <Dice :value="16" selected-die="D20" />
       </div>
     </section>
@@ -43,13 +45,11 @@ const activeMenu = useMenuStore();
 </template>
 
 <style scoped>
-.attack {
-  width: 50%;
+.attackType {
+  display: flex;
+  justify-content: space-evenly;
 }
-.svg-container {
-  width: 50%; /* Set a desired width for the SVG container */
-  max-width: 300px; /* Limit the maximum width for larger screens */
-  margin: 0 auto; /* Center the SVG container */
+p {
+  margin: auto;
 }
 </style>
-../store/store../stores/store

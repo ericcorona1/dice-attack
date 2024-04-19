@@ -26,7 +26,7 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
     <div class="diceHoldingBox">
       <button
         v-for="(item, key) in players[activePlayerFormatted].chosenDice"
-        @click="reRollDie(key, item)"
+        @click="reRollDie(key)"
       >
         <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
       </button>

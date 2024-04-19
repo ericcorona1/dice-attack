@@ -1,5 +1,5 @@
 <template>
-  <div class="svg-container">
+  <div class="">
     <svg
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid meet"
