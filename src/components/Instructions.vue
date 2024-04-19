@@ -8,8 +8,8 @@ const activeMenu = useMenuStore();
 </script>
 
 <template>
-  <div>
-    <section>
+  <section class="page">
+    <div>
       <header>
         <h2>Destroy opponents dice</h2>
       </header>
@@ -29,8 +29,8 @@ const activeMenu = useMenuStore();
         <p>=</p>
         <Dice :value="16" selected-die="D20" />
       </div>
-    </section>
-    <article>
+    </div>
+    <div>
       <DiceSelectArea>
         <Dice selected-die="D4" />
         <Dice selected-die="D6" />
@@ -39,17 +39,20 @@ const activeMenu = useMenuStore();
         <Dice selected-die="D12" />
         <Dice selected-die="D20" />
       </DiceSelectArea>
-    </article>
+    </div>
     <button @click="activeMenu.changeActiveMenu('welcome')">Home</button>
-  </div>
+  </section>
 </template>
 
 <style scoped>
 .attackType {
   display: flex;
   justify-content: space-evenly;
+  max-width: calc(100% - 20px);
+  margin: auto;
 }
-p {
+
+.attackType p {
   margin: auto;
 }
 </style>

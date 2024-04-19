@@ -29,5 +29,6 @@ const diceTypes = {
 <style scoped>
 .dice {
   background-color: grey;
+  width: 50px;
 }
 </style>
