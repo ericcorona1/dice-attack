@@ -9,10 +9,10 @@ const activeMenu = useMenuStore();
 
 <template>
   <section class="page">
-    <div>
-      <header>
-        <h2>Destroy opponents dice</h2>
-      </header>
+    <header>
+      <h2>Destroy opponents dice</h2>
+    </header>
+    <div class="wrapper">
       <h3>Greater Than Attack</h3>
       <div class="attackType">
         <Dice :value="11" selected-die="D12" />
@@ -20,6 +20,8 @@ const activeMenu = useMenuStore();
         <p>></p>
         <Dice :value="6" selected-die="D20" />
       </div>
+    </div>
+    <div class="wrapper">
       <h3>Equal To Attack</h3>
       <div class="attackType">
         <Dice :value="8" selected-die="D12" />
@@ -30,29 +32,39 @@ const activeMenu = useMenuStore();
         <Dice :value="16" selected-die="D20" />
       </div>
     </div>
-    <div>
-      <DiceSelectArea>
-        <Dice selected-die="D4" />
-        <Dice selected-die="D6" />
-        <Dice selected-die="D8" />
-        <Dice selected-die="D10" />
-        <Dice selected-die="D12" />
-        <Dice selected-die="D20" />
-      </DiceSelectArea>
-    </div>
+
     <button @click="activeMenu.changeActiveMenu('welcome')">Home</button>
+    <!-- <div>
+    <DiceSelectArea>
+      <Dice selected-die="D4" />
+      <Dice selected-die="D6" />
+      <Dice selected-die="D8" />
+      <Dice selected-die="D10" />
+      <Dice selected-die="D12" />
+      <Dice selected-die="D20" />
+    </DiceSelectArea>
+  </div> -->
   </section>
 </template>
 
 <style scoped>
+section > * {
+  margin: 20px auto;
+}
 .attackType {
   display: flex;
   justify-content: space-evenly;
   max-width: calc(100% - 20px);
   margin: auto;
+  gap: 2%;
 }
 
 .attackType p {
+  font-size: clamp(4rem, 20vw, 10rem);
   margin: auto;
+}
+
+.attackType .dice {
+  width: 20%;
 }
 </style>
