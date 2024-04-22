@@ -10,10 +10,11 @@ const activeMenu = useMenuStore();
 <template>
   <section class="page">
     <header>
-      <h2>Destroy opponents dice</h2>
+      <h2>Capture all opponent's dice</h2>
     </header>
     <div class="wrapper">
       <h3>Greater Than Attack</h3>
+      <p>1 attacking die only</p>
       <div class="attackType">
         <Dice :value="11" selected-die="D12" />
         <!-- <GreaterThan /> -->
@@ -23,6 +24,7 @@ const activeMenu = useMenuStore();
     </div>
     <div class="wrapper">
       <h3>Equal To Attack</h3>
+      <p>2 or more attacking die</p>
       <div class="attackType">
         <Dice :value="8" selected-die="D12" />
         <Dice :value="6" selected-die="D6" />

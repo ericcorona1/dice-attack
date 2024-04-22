@@ -1,6 +1,6 @@
 <template>
   <div class="dice">
-    <p>{{ value }}</p>
+    <!-- <p>{{ value }}</p> -->
     <component :is="diceTypes[selectedDie]" :value="value" />
   </div>
 </template>
