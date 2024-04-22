@@ -1,8 +1,5 @@
 <template>
-  <div class="dice">
-    <!-- <p>{{ value }}</p> -->
-    <component :is="diceTypes[selectedDie]" :value="value" />
-  </div>
+  <component :is="diceTypes[selectedDie]" :value="value" class="dice" />
 </template>
 
 <script setup>
@@ -28,7 +25,6 @@ const diceTypes = {
 
 <style scoped>
 .dice {
-  background-color: grey;
-  width: 50px;
+  display: flex;
 }
 </style>
