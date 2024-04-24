@@ -74,10 +74,13 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
 .container {
   position: relative;
 }
+
 .diceHoldingBox {
   background-color: grey;
+  height: 20vh;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .diceHoldingBox > button {
