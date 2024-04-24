@@ -37,10 +37,10 @@ const {
 </script>
 
 <template>
-  <section>
+  <section class="container">
     <!-- defending -->
     <h2>Defending: {{ inactivePlayer }}</h2>
-    <DiceSelectArea>
+    <DiceSelectArea class="defendingDiceBox">
       <template
         v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
       >
@@ -125,58 +125,47 @@ const {
       <!-- Winning attacking die should reroll -->
     </div>
     <!-- attacking -->
-    <h2>Attacking: {{ activePlayer }}</h2>
-    <DiceSelectArea>
-      <template
-        v-for="(item, key) in players[activePlayerFormatted].chosenDice"
-      >
-        <button
-          v-if="item.active"
-          @click="
-            moveDiceToAttackingDefending(key, activePlayerFormatted),
-              setActiveDieKeys(key)
-          "
+    <div class="attackingDiceBox">
+      <h2>Attacking: {{ activePlayer }}</h2>
+      <DiceSelectArea>
+        <template
+          v-for="(item, key) in players[activePlayerFormatted].chosenDice"
         >
-          <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-        </button>
-        <template v-else>
-          <!-- Render inactive dice differently here -->
-          <Dice
-            :selectedDie="item.faceValue"
-            :value="item.rollValue"
-            class="inactive"
-          />
+          <button
+            v-if="item.active"
+            @click="
+              moveDiceToAttackingDefending(key, activePlayerFormatted),
+                setActiveDieKeys(key)
+            "
+          >
+            <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+          </button>
+          <template v-else>
+            <!-- Render inactive dice differently here -->
+            <Dice
+              :selectedDie="item.faceValue"
+              :value="item.rollValue"
+              class="inactive"
+            />
+          </template>
         </template>
-      </template>
-    </DiceSelectArea>
+      </DiceSelectArea>
+    </div>
   </section>
 </template>
 
 <style>
-.defendingDiceBox {
-  background-color: pink;
+.container {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  flex-direction: column;
 }
 
-.targetDiceBox {
-  background-color: blueviolet;
-}
-.targetInstructions {
-  background-color: blue;
-}
 .activeDice {
-  background-color: red;
-  width: 100%;
   display: flex;
   justify-content: space-around;
 }
 
 .attackingDiceBox {
-  background-color: brown;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  margin-top: auto;
 }
 </style>
