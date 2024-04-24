@@ -41,29 +41,27 @@ const {
     <!-- defending -->
     <h2>Defending: {{ inactivePlayer }}</h2>
     <DiceSelectArea>
-      <div class="defendingDiceBox">
-        <template
-          v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
+      <template
+        v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
+      >
+        <button
+          v-if="item.active"
+          @click="
+            moveDiceToAttackingDefending(key, inactivePlayerFormatted),
+              setInactiveDieKey(key)
+          "
         >
-          <button
-            v-if="item.active"
-            @click="
-              moveDiceToAttackingDefending(key, inactivePlayerFormatted),
-                setInactiveDieKey(key)
-            "
-          >
-            <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-          </button>
-          <!-- Render inactive dice differently here -->
-          <template v-else>
-            <Dice
-              class="inactive"
-              :selectedDie="item.faceValue"
-              :value="item.rollValue"
-            />
-          </template>
+          <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+        </button>
+        <!-- Render inactive dice differently here -->
+        <template v-else>
+          <Dice
+            class="inactive"
+            :selectedDie="item.faceValue"
+            :value="item.rollValue"
+          />
         </template>
-      </div>
+      </template>
     </DiceSelectArea>
 
     <!-- Active Dice Field -->
@@ -129,29 +127,27 @@ const {
     <!-- attacking -->
     <h2>Attacking: {{ activePlayer }}</h2>
     <DiceSelectArea>
-      <div class="attackingDiceBox">
-        <template
-          v-for="(item, key) in players[activePlayerFormatted].chosenDice"
+      <template
+        v-for="(item, key) in players[activePlayerFormatted].chosenDice"
+      >
+        <button
+          v-if="item.active"
+          @click="
+            moveDiceToAttackingDefending(key, activePlayerFormatted),
+              setActiveDieKeys(key)
+          "
         >
-          <button
-            v-if="item.active"
-            @click="
-              moveDiceToAttackingDefending(key, activePlayerFormatted),
-                setActiveDieKeys(key)
-            "
-          >
-            <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-          </button>
-          <template v-else>
-            <!-- Render inactive dice differently here -->
-            <Dice
-              :selectedDie="item.faceValue"
-              :value="item.rollValue"
-              class="inactive"
-            />
-          </template>
+          <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+        </button>
+        <template v-else>
+          <!-- Render inactive dice differently here -->
+          <Dice
+            :selectedDie="item.faceValue"
+            :value="item.rollValue"
+            class="inactive"
+          />
         </template>
-      </div>
+      </template>
     </DiceSelectArea>
   </section>
 </template>
