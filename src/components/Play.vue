@@ -39,8 +39,8 @@ const {
 <template>
   <section>
     <!-- defending -->
+    <h2>Defending: {{ inactivePlayer }}</h2>
     <DiceSelectArea>
-      <h2>Defending: {{ inactivePlayer }}</h2>
       <div class="defendingDiceBox">
         <template
           v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
@@ -127,8 +127,8 @@ const {
       <!-- Winning attacking die should reroll -->
     </div>
     <!-- attacking -->
+    <h2>Attacking: {{ activePlayer }}</h2>
     <DiceSelectArea>
-      <h2>Attacking: {{ activePlayer }}</h2>
       <div class="attackingDiceBox">
         <template
           v-for="(item, key) in players[activePlayerFormatted].chosenDice"
