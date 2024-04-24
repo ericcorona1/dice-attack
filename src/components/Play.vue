@@ -37,119 +37,123 @@ const {
 </script>
 
 <template>
-  <!-- defending -->
-  <DiceSelectArea>
-    <h2>Defending: {{ inactivePlayer }}</h2>
-    <div class="defendingDiceBox">
-      <template
-        v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
-      >
-        <button
-          v-if="item.active"
-          @click="
-            moveDiceToAttackingDefending(key, inactivePlayerFormatted),
-              setInactiveDieKey(key)
-          "
+  <section>
+    <!-- defending -->
+    <DiceSelectArea>
+      <h2>Defending: {{ inactivePlayer }}</h2>
+      <div class="defendingDiceBox">
+        <template
+          v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
         >
-          <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-        </button>
-        <!-- Render inactive dice differently here -->
-        <template v-else>
-          <Dice
-            class="inactive"
-            :selectedDie="item.faceValue"
-            :value="item.rollValue"
-          />
-        </template>
-      </template>
-    </div>
-  </DiceSelectArea>
-
-  <!-- Active Dice Field -->
-  <div class="targetDiceBox">
-    <div class="targetInstructions">
-      <p>1 attack die > defend die || 2+ attack die = 1 defend die</p>
-      <p>Click active die to remove || Click 1 die and skip to re-roll</p>
-    </div>
-    <div class="activeDice">
-      <div class="attackingContainer">
-        <button
-          class="attacking"
-          v-for="(item, key) in attackingDice"
-          @click="removeDie(attackingDice, key)"
-        >
-          <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-        </button>
-        <div class="total">
-          <h2>Total</h2>
-          <p>{{ attackingTotal }}</p>
-        </div>
-      </div>
-      <div class="divider"></div>
-      <div class="defendingContainer">
-        <button
-          class="defending"
-          v-for="(item, key) in defendingDice"
-          @click="removeDie(defendingDice, key)"
-        >
-          <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-        </button>
-        <div class="total">
-          <h2>Total</h2>
-          <p>{{ defendingTotal }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Toggle and win check -->
-  <div class="buttonContainer">
-    <button
-      v-if="activeDiceCheck()"
-      @click="
-        inactiveDie(),
-          checkWinner(),
-          reRollDie(activeDieKeys),
-          toggleTurn(),
-          resetAtackingDefending()
-      "
-    >
-      Continue
-    </button>
-    <button
-      v-if="Object.keys(attackingDice).length === 1"
-      @click="reRollDie(activeDieKeys), toggleTurn(), resetAtackingDefending()"
-    >
-      Skip
-    </button>
-    <!-- Winning attacking die should reroll -->
-  </div>
-  <!-- attacking -->
-  <DiceSelectArea>
-    <h2>Attacking: {{ activePlayer }}</h2>
-    <div class="attackingDiceBox">
-      <template
-        v-for="(item, key) in players[activePlayerFormatted].chosenDice"
-      >
-        <button
-          v-if="item.active"
-          @click="
-            moveDiceToAttackingDefending(key, activePlayerFormatted),
-              setActiveDieKeys(key)
-          "
-        >
-          <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-        </button>
-        <template v-else>
+          <button
+            v-if="item.active"
+            @click="
+              moveDiceToAttackingDefending(key, inactivePlayerFormatted),
+                setInactiveDieKey(key)
+            "
+          >
+            <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+          </button>
           <!-- Render inactive dice differently here -->
-          <Dice
-            :selectedDie="item.faceValue"
-            :value="item.rollValue"
-            class="inactive"
-          />
+          <template v-else>
+            <Dice
+              class="inactive"
+              :selectedDie="item.faceValue"
+              :value="item.rollValue"
+            />
+          </template>
         </template>
-      </template>
+      </div>
+    </DiceSelectArea>
+
+    <!-- Active Dice Field -->
+    <div class="targetDiceBox">
+      <div class="targetInstructions">
+        <p>1 attack die > defend die || 2+ attack die = 1 defend die</p>
+        <p>Click active die to remove || Click 1 die and skip to re-roll</p>
+      </div>
+      <div class="activeDice">
+        <div class="attackingContainer">
+          <button
+            class="attacking"
+            v-for="(item, key) in attackingDice"
+            @click="removeDie(attackingDice, key)"
+          >
+            <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+          </button>
+          <div class="total">
+            <h2>Total</h2>
+            <p>{{ attackingTotal }}</p>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="defendingContainer">
+          <button
+            class="defending"
+            v-for="(item, key) in defendingDice"
+            @click="removeDie(defendingDice, key)"
+          >
+            <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+          </button>
+          <div class="total">
+            <h2>Total</h2>
+            <p>{{ defendingTotal }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </DiceSelectArea>
+    <!-- Toggle and win check -->
+    <div class="buttonContainer">
+      <button
+        v-if="activeDiceCheck()"
+        @click="
+          inactiveDie(),
+            checkWinner(),
+            reRollDie(activeDieKeys),
+            toggleTurn(),
+            resetAtackingDefending()
+        "
+      >
+        Continue
+      </button>
+      <button
+        v-if="Object.keys(attackingDice).length === 1"
+        @click="
+          reRollDie(activeDieKeys), toggleTurn(), resetAtackingDefending()
+        "
+      >
+        Skip
+      </button>
+      <!-- Winning attacking die should reroll -->
+    </div>
+    <!-- attacking -->
+    <DiceSelectArea>
+      <h2>Attacking: {{ activePlayer }}</h2>
+      <div class="attackingDiceBox">
+        <template
+          v-for="(item, key) in players[activePlayerFormatted].chosenDice"
+        >
+          <button
+            v-if="item.active"
+            @click="
+              moveDiceToAttackingDefending(key, activePlayerFormatted),
+                setActiveDieKeys(key)
+            "
+          >
+            <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+          </button>
+          <template v-else>
+            <!-- Render inactive dice differently here -->
+            <Dice
+              :selectedDie="item.faceValue"
+              :value="item.rollValue"
+              class="inactive"
+            />
+          </template>
+        </template>
+      </div>
+    </DiceSelectArea>
+  </section>
 </template>
 
 <style>
