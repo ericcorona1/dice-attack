@@ -15,14 +15,8 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
   <section class="container">
     <div class="pendingField">
       <div class="instructionText">
-        <h2>{{ activePlayer }} Select Dice</h2>
-        <h2
-          v-if="
-            Object.keys(players[activePlayerFormatted].chosenDice).length == 6
-          "
-        >
-          {{ activePlayer }} May Re-roll 1 Die
-        </h2>
+        <h2>{{ activePlayer }} Select 6 Dice</h2>
+        <p>Die may not be removed after selection</p>
       </div>
       <div class="diceHoldingBox">
         <button
@@ -32,12 +26,16 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
           <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
         </button>
       </div>
-      <div class="confirmationBox">
-        <!-- <button>Re-roll</button> -->
+      <div
+        class="confirmationBox"
+        v-if="
+          Object.keys(players[activePlayerFormatted].chosenDice).length == 6
+        "
+      >
+        <h3>{{ activePlayer }} May Re-roll 1 Die</h3>
+        <p>Click one of your selected die to re-roll</p>
+
         <button
-          v-if="
-            Object.keys(players[activePlayerFormatted].chosenDice).length == 6
-          "
           @click="
             toggleTurn();
             selectPhaseCompleted();
@@ -85,5 +83,13 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
 
 .diceHoldingBox > button {
   width: 15%;
+}
+
+.confirmationBox {
+  margin: 20px auto;
+}
+
+.confirmationBox > button {
+  margin: 20px auto;
 }
 </style>
