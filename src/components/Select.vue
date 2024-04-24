@@ -12,66 +12,75 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
 </script>
 
 <template>
-  <div class="pendingField">
-    <div class="instructionText">
-      <h2>{{ activePlayer }} Select Dice</h2>
-      <h2
-        v-if="
-          Object.keys(players[activePlayerFormatted].chosenDice).length == 6
-        "
-      >
-        {{ activePlayer }} May Re-roll 1 Die
-      </h2>
+  <section class="container">
+    <div class="pendingField">
+      <div class="instructionText">
+        <h2>{{ activePlayer }} Select Dice</h2>
+        <h2
+          v-if="
+            Object.keys(players[activePlayerFormatted].chosenDice).length == 6
+          "
+        >
+          {{ activePlayer }} May Re-roll 1 Die
+        </h2>
+      </div>
+      <div class="diceHoldingBox">
+        <button
+          v-for="(item, key) in players[activePlayerFormatted].chosenDice"
+          @click="reRollDie(key)"
+        >
+          <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+        </button>
+      </div>
+      <div class="confirmationBox">
+        <!-- <button>Re-roll</button> -->
+        <button
+          v-if="
+            Object.keys(players[activePlayerFormatted].chosenDice).length == 6
+          "
+          @click="
+            toggleTurn();
+            selectPhaseCompleted();
+          "
+        >
+          Continue
+        </button>
+      </div>
     </div>
-    <div class="diceHoldingBox">
-      <button
-        v-for="(item, key) in players[activePlayerFormatted].chosenDice"
-        @click="reRollDie(key)"
-      >
-        <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+    <DiceSelectArea>
+      <button @click="addDieToPlayer('D4')">
+        <Dice selected-die="D4" />
       </button>
-    </div>
-    <div class="confirmationBox">
-      <!-- <button>Re-roll</button> -->
-      <button
-        v-if="
-          Object.keys(players[activePlayerFormatted].chosenDice).length == 6
-        "
-        @click="
-          toggleTurn();
-          selectPhaseCompleted();
-        "
-      >
-        Continue
+      <button @click="addDieToPlayer('D6')">
+        <Dice selected-die="D6" />
       </button>
-    </div>
-  </div>
-  <DiceSelectArea>
-    <button @click="addDieToPlayer('D4')">
-      <Dice selected-die="D4" />
-    </button>
-    <button @click="addDieToPlayer('D6')">
-      <Dice selected-die="D6" />
-    </button>
-    <button @click="addDieToPlayer('D8')">
-      <Dice selected-die="D8" />
-    </button>
-    <button @click="addDieToPlayer('D10')">
-      <Dice selected-die="D10" />
-    </button>
-    <button @click="addDieToPlayer('D12')">
-      <Dice selected-die="D12" />
-    </button>
-    <button @click="addDieToPlayer('D20')">
-      <Dice selected-die="D20" />
-    </button>
-  </DiceSelectArea>
+      <button @click="addDieToPlayer('D8')">
+        <Dice selected-die="D8" />
+      </button>
+      <button @click="addDieToPlayer('D10')">
+        <Dice selected-die="D10" />
+      </button>
+      <button @click="addDieToPlayer('D12')">
+        <Dice selected-die="D12" />
+      </button>
+      <button @click="addDieToPlayer('D20')">
+        <Dice selected-die="D20" />
+      </button>
+    </DiceSelectArea>
+  </section>
 </template>
 
 <style scoped>
+.container {
+  position: relative;
+}
 .diceHoldingBox {
   background-color: grey;
   display: flex;
   justify-content: space-around;
+}
+
+.diceHoldingBox > button {
+  width: 15%;
 }
 </style>
