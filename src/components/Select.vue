@@ -74,8 +74,4 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
   display: flex;
   justify-content: space-around;
 }
-li {
-  background-color: blue;
-  height: 100px;
-}
 </style>

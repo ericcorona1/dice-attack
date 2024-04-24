@@ -13,7 +13,7 @@
   gap: 2%;
 }
 
-.selectArea .dice {
-  flex: auto;
+.selectArea > button {
+  width: 20%;
 }
 </style>
