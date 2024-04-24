@@ -92,4 +92,12 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
 .confirmationBox > button {
   margin: 20px auto;
 }
+
+.selectArea {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.5%;
+}
 </style>
