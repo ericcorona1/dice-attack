@@ -6,7 +6,6 @@
 
 <style>
 .selectArea {
-  width: 99%;
   height: 20vh;
   background-color: gray;
   display: flex;
