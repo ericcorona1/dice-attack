@@ -66,10 +66,10 @@ const {
 
     <!-- Active Dice Field -->
     <div class="targetDiceBox">
-      <div class="targetInstructions">
+      <!-- <div class="targetInstructions">
         <p>1 attack die > defend die || 2+ attack die = 1 defend die</p>
         <p>Click active die to remove || Click 1 die and skip to re-roll</p>
-      </div>
+      </div> -->
       <div class="activeDice">
         <div class="attackingContainer">
           <button
@@ -80,8 +80,7 @@ const {
             <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
           </button>
           <div class="total">
-            <h2>Total</h2>
-            <p>{{ attackingTotal }}</p>
+            <p>Total: {{ attackingTotal }}</p>
           </div>
         </div>
         <div class="divider"></div>
@@ -94,35 +93,33 @@ const {
             <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
           </button>
           <div class="total">
-            <h2>Total</h2>
-            <p>{{ defendingTotal }}</p>
+            <p>Total: {{ defendingTotal }}</p>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Toggle and win check -->
-    <div class="buttonContainer">
-      <button
-        v-if="activeDiceCheck()"
-        @click="
-          inactiveDie(),
-            checkWinner(),
-            reRollDie(activeDieKeys),
-            toggleTurn(),
-            resetAtackingDefending()
-        "
-      >
-        Continue
-      </button>
-      <button
-        v-if="Object.keys(attackingDice).length === 1"
-        @click="
-          reRollDie(activeDieKeys), toggleTurn(), resetAtackingDefending()
-        "
-      >
-        Skip
-      </button>
-      <!-- Winning attacking die should reroll -->
+      <!-- Toggle and win check -->
+      <div class="buttonContainer">
+        <button
+          v-if="activeDiceCheck()"
+          @click="
+            inactiveDie(),
+              checkWinner(),
+              reRollDie(activeDieKeys),
+              toggleTurn(),
+              resetAtackingDefending()
+          "
+        >
+          Continue
+        </button>
+        <button
+          v-if="Object.keys(attackingDice).length === 1"
+          @click="
+            reRollDie(activeDieKeys), toggleTurn(), resetAtackingDefending()
+          "
+        >
+          Skip
+        </button>
+      </div>
     </div>
     <!-- attacking -->
     <div class="attackingDiceBox">
@@ -160,9 +157,17 @@ const {
   flex-direction: column;
 }
 
+.targetDiceBox {
+  height: 40vh;
+}
+
 .activeDice {
   display: flex;
   justify-content: space-around;
+}
+
+.attackingContainer > button {
+  width: 100px;
 }
 
 .attackingDiceBox {
