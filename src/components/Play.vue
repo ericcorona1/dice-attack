@@ -66,10 +66,6 @@ const {
 
     <!-- Active Dice Field -->
     <div class="targetDiceBox">
-      <!-- <div class="targetInstructions">
-        <p>1 attack die > defend die || 2+ attack die = 1 defend die</p>
-        <p>Click active die to remove || Click 1 die and skip to re-roll</p>
-      </div> -->
       <div class="activeDice">
         <div class="diceContainer">
           <button
@@ -162,6 +158,7 @@ const {
 }
 
 .activeDice {
+  padding: 10% 0;
   display: flex;
   justify-content: space-evenly;
 }
@@ -171,7 +168,7 @@ const {
 }
 
 .diceContainer > button {
-  width: 50%;
+  width: clamp(50px, 50%, 100px);
 }
 
 .divider {
