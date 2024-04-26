@@ -71,7 +71,7 @@ const {
         <p>Click active die to remove || Click 1 die and skip to re-roll</p>
       </div> -->
       <div class="activeDice">
-        <div class="attackingContainer">
+        <div class="diceContainer">
           <button
             class="attacking"
             v-for="(item, key) in attackingDice"
@@ -84,7 +84,7 @@ const {
           </div>
         </div>
         <div class="divider"></div>
-        <div class="defendingContainer">
+        <div class="diceContainer">
           <button
             class="defending"
             v-for="(item, key) in defendingDice"
@@ -163,11 +163,20 @@ const {
 
 .activeDice {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
-.attackingContainer > button {
-  width: 100px;
+.diceContainer {
+  width: 45%;
+}
+
+.diceContainer > button {
+  width: 50%;
+}
+
+.divider {
+  width: 5px;
+  background-color: grey;
 }
 
 .attackingDiceBox {
