@@ -67,29 +67,33 @@ const {
     <!-- Active Dice Field -->
     <div class="targetDiceBox">
       <div class="activeDice">
-        <div class="diceContainer">
-          <button
-            class="attacking"
-            v-for="(item, key) in attackingDice"
-            @click="removeDie(attackingDice, key)"
-          >
-            <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-          </button>
+        <div class="activeDiceSides">
+          <div class="diceContainer">
+            <button
+              class="attacking"
+              v-for="(item, key) in attackingDice"
+              @click="removeDie(attackingDice, key)"
+            >
+              <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+            </button>
+          </div>
           <div class="total">
             <p>Total: {{ attackingTotal }}</p>
           </div>
         </div>
         <div class="divider"></div>
-        <div class="diceContainer">
-          <button
-            class="defending"
-            v-for="(item, key) in defendingDice"
-            @click="removeDie(defendingDice, key)"
-          >
-            <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-          </button>
-          <div class="total">
-            <p>Total: {{ defendingTotal }}</p>
+        <div class="activeDiceSides">
+          <div class="diceContainer">
+            <button
+              class="defending"
+              v-for="(item, key) in defendingDice"
+              @click="removeDie(defendingDice, key)"
+            >
+              <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+            </button>
+            <div class="total">
+              <p>Total: {{ defendingTotal }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -163,12 +167,13 @@ const {
   justify-content: space-evenly;
 }
 
-.diceContainer {
-  width: 45%;
+.activeDiceSides {
+  width: 49%;
 }
 
 .diceContainer > button {
-  width: clamp(50px, 50%, 100px);
+  width: clamp(50px, 50% - 1%, 100px);
+  margin: 0.5%;
 }
 
 .divider {
