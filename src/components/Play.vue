@@ -39,30 +39,32 @@ const {
 <template>
   <section class="container">
     <!-- defending -->
-    <h2>Defending: {{ inactivePlayer }}</h2>
-    <DiceSelectArea class="defendingDiceBox">
-      <template
-        v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
-      >
-        <button
-          v-if="item.active"
-          @click="
-            moveDiceToAttackingDefending(key, inactivePlayerFormatted),
-              setInactiveDieKey(key)
-          "
+    <div class="player">
+      <h2>Defending: {{ inactivePlayer }}</h2>
+      <DiceSelectArea class="defendingDiceBox">
+        <template
+          v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
         >
-          <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-        </button>
-        <!-- Render inactive dice differently here -->
-        <template v-else>
-          <Dice
-            class="inactive"
-            :selectedDie="item.faceValue"
-            :value="item.rollValue"
-          />
+          <button
+            v-if="item.active"
+            @click="
+              moveDiceToAttackingDefending(key, inactivePlayerFormatted),
+                setInactiveDieKey(key)
+            "
+          >
+            <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+          </button>
+          <!-- Render inactive dice differently here -->
+          <template v-else>
+            <Dice
+              class="inactive"
+              :selectedDie="item.faceValue"
+              :value="item.rollValue"
+            />
+          </template>
         </template>
-      </template>
-    </DiceSelectArea>
+      </DiceSelectArea>
+    </div>
 
     <!-- Active Dice Field -->
     <div class="targetDiceBox">
@@ -91,9 +93,9 @@ const {
             >
               <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
             </button>
-            <div class="total">
-              <p>Total: {{ defendingTotal }}</p>
-            </div>
+          </div>
+          <div class="total">
+            <p>Total: {{ defendingTotal }}</p>
           </div>
         </div>
       </div>
@@ -122,31 +124,33 @@ const {
       </div>
     </div>
     <!-- attacking -->
-    <div class="attackingDiceBox">
-      <h2>Attacking: {{ activePlayer }}</h2>
-      <DiceSelectArea>
-        <template
-          v-for="(item, key) in players[activePlayerFormatted].chosenDice"
-        >
-          <button
-            v-if="item.active"
-            @click="
-              moveDiceToAttackingDefending(key, activePlayerFormatted),
-                setActiveDieKeys(key)
-            "
+    <div class="player">
+      <div class="attackingDiceBox">
+        <h2>Attacking: {{ activePlayer }}</h2>
+        <DiceSelectArea>
+          <template
+            v-for="(item, key) in players[activePlayerFormatted].chosenDice"
           >
-            <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-          </button>
-          <template v-else>
-            <!-- Render inactive dice differently here -->
-            <Dice
-              :selectedDie="item.faceValue"
-              :value="item.rollValue"
-              class="inactive"
-            />
+            <button
+              v-if="item.active"
+              @click="
+                moveDiceToAttackingDefending(key, activePlayerFormatted),
+                  setActiveDieKeys(key)
+              "
+            >
+              <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+            </button>
+            <template v-else>
+              <!-- Render inactive dice differently here -->
+              <Dice
+                :selectedDie="item.faceValue"
+                :value="item.rollValue"
+                class="inactive"
+              />
+            </template>
           </template>
-        </template>
-      </DiceSelectArea>
+        </DiceSelectArea>
+      </div>
     </div>
   </section>
 </template>
@@ -155,25 +159,37 @@ const {
 .container {
   display: flex;
   flex-direction: column;
-}
-
-.targetDiceBox {
-  height: 40vh;
+  justify-content: space-between;
 }
 
 .activeDice {
-  padding: 10% 0;
   display: flex;
   justify-content: space-evenly;
 }
 
 .activeDiceSides {
-  width: 49%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.diceContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 5px;
 }
 
 .diceContainer > button {
-  width: clamp(50px, 50% - 1%, 100px);
-  margin: 0.5%;
+  width: clamp(50px, 100% / 3 - 5px, 180px);
+}
+
+.total {
+  margin-top: auto;
+}
+
+.total > p {
+  text-align: center;
 }
 
 .divider {
@@ -183,5 +199,14 @@ const {
 
 .attackingDiceBox {
   margin-top: auto;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttonContainer > button {
+  width: 40%;
 }
 </style>
