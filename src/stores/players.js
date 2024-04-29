@@ -37,6 +37,8 @@ export const usePlayersStore = defineStore("players", () => {
   const inactivePlayerFormatted = computed(() =>
     inactivePlayer.value.replace(/\s/g, "").toLowerCase()
   );
+
+  const winner = ref("");
   // add die in the select phase
   function addDieToPlayer(faceValue) {
     const activePlayer = player1Turn.value
@@ -97,6 +99,9 @@ export const usePlayersStore = defineStore("players", () => {
       menuStore.changeActiveMenu("play");
     }
   }
+  function setWinner() {
+    winner.value = activePlayer.value;
+  }
 
   function checkWinner() {
     const player1 = players.value.player1;
@@ -110,11 +115,11 @@ export const usePlayersStore = defineStore("players", () => {
     console.log(`All are not active: ${allInactive}`);
     // If all dice are inactive, set the active menu to indicate the winning player
     if (allInactive) {
+      setWinner();
       // Assuming you have a method to change the active menu
       menuStore.changeActiveMenu("winner");
     }
   }
-
   return {
     players,
     addDieToPlayer,
@@ -127,5 +132,6 @@ export const usePlayersStore = defineStore("players", () => {
     inactivePlayer,
     inactivePlayerFormatted,
     checkWinner,
+    winner,
   };
 });
