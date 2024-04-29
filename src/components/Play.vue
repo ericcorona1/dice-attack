@@ -61,13 +61,11 @@ const {
           </button>
           <template v-else>
             <!-- Render inactive dice differently here -->
-            <div class="inactiveContainer">
-              <Dice
-                :selectedDie="item.faceValue"
-                :value="item.rollValue"
-                class="inactive"
-              />
-            </div>
+            <Dice
+              :selectedDie="item.faceValue"
+              :value="item.rollValue"
+              class="inactive"
+            />
           </template>
         </template>
       </DiceSelectArea>
@@ -151,13 +149,11 @@ const {
             </button>
             <template v-else>
               <!-- Render inactive dice differently here -->
-              <div class="inactiveContainer">
-                <Dice
-                  :selectedDie="item.faceValue"
-                  :value="item.rollValue"
-                  class="inactive"
-                />
-              </div>
+              <Dice
+                :selectedDie="item.faceValue"
+                :value="item.rollValue"
+                class="inactive"
+              />
             </template>
           </template>
         </DiceSelectArea>
@@ -195,8 +191,19 @@ const {
   width: clamp(50px, 100% / 3 - 5px, 180px);
 }
 
-.inactiveContainer {
-  width: clamp(50px, 100% / 3 - 5px, 100px);
+.inactive {
+  width: clamp(50px, 100% / 6, 200px);
+}
+
+.inactive > svg > *:not(text) {
+  fill: cornflowerblue;
+}
+
+@media (max-width: 500px) {
+  .inactiveContainer {
+    width: 70px;
+    margin: 0 5%;
+  }
 }
 
 .total {
