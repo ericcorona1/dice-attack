@@ -246,7 +246,14 @@ dialog {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 90%;
   height: 90vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+dialog > section {
+  border: none;
 }
 
 dialog::backdrop {
