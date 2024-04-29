@@ -6,7 +6,12 @@
       xmlns="http://www.w3.org/2000/svg"
     >
       <!-- D20: Hexagon -->
-      <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" fill="blue" />
+
+      <polygon
+        points="50,1 75,5 95,25 95,75 75,95 50,99 25,95 5,75 5,25 25,5"
+        fill="blue"
+      />
+
       <text
         x="50"
         y="50"

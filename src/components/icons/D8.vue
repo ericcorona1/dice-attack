@@ -6,7 +6,8 @@
       xmlns="http://www.w3.org/2000/svg"
     >
       <!-- D8: Vertical Diamond -->
-      <polygon points="60,20 80,50 60,80 40,50" fill="blue" />
+      <polygon points="50,10 90,50 50,90 10,50" fill="blue" />
+
       <text
         x="50"
         y="50"

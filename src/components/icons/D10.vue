@@ -5,12 +5,8 @@
       preserveAspectRatio="xMidYMid meet"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <!-- D12: Pentagon -->
-      <polygon
-        points="60,20 80,50 60,80 40,50"
-        fill="blue"
-        transform="rotate(90, 50, 50)"
-      />
+      <!-- D10: Pentagon -->
+      <polygon points="50,5 90,35 90,65 50,95 10,65 10,35" fill="blue" />
       <text
         x="50"
         y="50"
