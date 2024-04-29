@@ -30,7 +30,12 @@ const activeMenu = useMenuStore();
       </div>
     </div>
 
-    <button @click="activeMenu.changeActiveMenu('welcome')">Home</button>
+    <button
+      v-if="activeMenu.activeMenu === Instructions"
+      @click="activeMenu.changeActiveMenu('welcome')"
+    >
+      Home
+    </button>
   </section>
 </template>
 
