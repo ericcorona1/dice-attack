@@ -14,6 +14,17 @@
 }
 
 .selectArea > button {
-  width: 15%;
+  width: clamp(50px, 100% / 6, 200px);
+  margin: 0 5px;
+}
+
+@media (max-width: 500px) {
+  .selectArea {
+    flex-wrap: wrap;
+  }
+  .selectArea > button {
+    width: 70px;
+    margin: 0 5%;
+  }
 }
 </style>

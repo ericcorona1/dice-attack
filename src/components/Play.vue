@@ -40,7 +40,12 @@ const {
   <section class="container">
     <!-- defending -->
     <div class="player">
-      <h2>Defending: {{ inactivePlayer }}</h2>
+      <h2>
+        Defending:
+        <span>
+          {{ inactivePlayer }}
+        </span>
+      </h2>
       <DiceSelectArea class="defendingDiceBox">
         <template
           v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
@@ -54,13 +59,15 @@ const {
           >
             <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
           </button>
-          <!-- Render inactive dice differently here -->
           <template v-else>
-            <Dice
-              class="inactive"
-              :selectedDie="item.faceValue"
-              :value="item.rollValue"
-            />
+            <!-- Render inactive dice differently here -->
+            <div class="inactiveContainer">
+              <Dice
+                :selectedDie="item.faceValue"
+                :value="item.rollValue"
+                class="inactive"
+              />
+            </div>
           </template>
         </template>
       </DiceSelectArea>
@@ -68,6 +75,7 @@ const {
 
     <!-- Active Dice Field -->
     <div class="targetDiceBox">
+      <!-- Attacking -->
       <div class="activeDice">
         <div class="activeDiceSides">
           <div class="diceContainer">
@@ -84,6 +92,7 @@ const {
           </div>
         </div>
         <div class="divider"></div>
+        <!-- Defending -->
         <div class="activeDiceSides">
           <div class="diceContainer">
             <button
@@ -142,11 +151,13 @@ const {
             </button>
             <template v-else>
               <!-- Render inactive dice differently here -->
-              <Dice
-                :selectedDie="item.faceValue"
-                :value="item.rollValue"
-                class="inactive"
-              />
+              <div class="inactiveContainer">
+                <Dice
+                  :selectedDie="item.faceValue"
+                  :value="item.rollValue"
+                  class="inactive"
+                />
+              </div>
             </template>
           </template>
         </DiceSelectArea>
@@ -182,6 +193,10 @@ const {
 
 .diceContainer > button {
   width: clamp(50px, 100% / 3 - 5px, 180px);
+}
+
+.inactiveContainer {
+  width: clamp(50px, 100% / 3 - 5px, 100px);
 }
 
 .total {
