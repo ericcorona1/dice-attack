@@ -1,10 +1,24 @@
 <script setup>
 import Dice from "./Dice.vue";
 import DiceSelectArea from "./DiceSelectArea.vue";
+import Instructions from "./Instructions.vue";
 import { storeToRefs } from "pinia";
 import { usePlayersStore } from "../stores/players";
 import { useAttackingDefendingDiceStore } from "../stores/attackingDefendingDice";
-import { computed } from "vue";
+import { ref } from "vue";
+
+// Define a ref for the dialog
+const dialog = ref(null);
+
+// Function to open the modal
+const openModal = () => {
+  dialog.value.showModal();
+};
+
+// Function to close the modal
+const closeModal = () => {
+  dialog.value.close();
+};
 
 const playerStore = usePlayersStore();
 const {
@@ -134,6 +148,11 @@ const {
     <div class="player">
       <div class="attackingDiceBox">
         <h2>Attacking: {{ activePlayer }}</h2>
+        <button @click="openModal" class="modalBtn">Instructions</button>
+        <dialog ref="dialog">
+          <button autofocus @click="closeModal">Close</button>
+          <Instructions />
+        </dialog>
         <DiceSelectArea>
           <template
             v-for="(item, key) in players[activePlayerFormatted].chosenDice"
@@ -172,6 +191,7 @@ const {
 .activeDice {
   display: flex;
   justify-content: space-evenly;
+  margin-bottom: 10px;
 }
 
 .activeDiceSides {
@@ -215,5 +235,21 @@ const {
 
 .buttonContainer > button {
   width: 40%;
+}
+
+h2 {
+  display: inline-block;
+}
+
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modalBtn {
+  display: inline-block;
+  margin-left: 5%;
 }
 </style>
