@@ -1,4 +1,4 @@
-<script>
+<script setup>
 function reloadPage() {
   window.location.reload();
 }
