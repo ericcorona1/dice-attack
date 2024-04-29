@@ -13,16 +13,20 @@
   align-items: center;
 }
 
-.selectArea > button {
+.selectArea > * {
   width: clamp(50px, 100% / 6, 200px);
   margin: 0 5px;
+}
+
+.inactive > svg > *:not(text) {
+  fill: cornflowerblue;
 }
 
 @media (max-width: 500px) {
   .selectArea {
     flex-wrap: wrap;
   }
-  .selectArea > button {
+  .selectArea > * {
     width: 70px;
     margin: 0 5%;
   }

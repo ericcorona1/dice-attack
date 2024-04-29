@@ -191,7 +191,7 @@ const {
   width: clamp(50px, 100% / 3 - 5px, 180px);
 }
 
-.inactive {
+/* .inactive {
   width: clamp(50px, 100% / 6, 200px);
 }
 
@@ -204,7 +204,7 @@ const {
     width: 70px;
     margin: 0 5%;
   }
-}
+} */
 
 .total {
   margin-top: auto;
