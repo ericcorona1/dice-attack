@@ -249,6 +249,11 @@ dialog {
   height: 90vh;
 }
 
+dialog::backdrop {
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
 .modalBtn {
   display: inline-block;
   margin-left: 5%;
