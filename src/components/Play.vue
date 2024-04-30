@@ -121,36 +121,39 @@ const {
         </div>
       </div>
       <!-- Toggle and win check -->
-      <div class="buttonContainer">
-        <button
-          v-if="activeDiceCheck()"
-          @click="
-            inactiveDie(),
-              checkWinner(),
-              reRollDie(activeDieKeys),
-              toggleTurn(),
-              resetAtackingDefending()
-          "
-        >
-          Continue
-        </button>
-        <template v-if="Object.keys(attackingDice).length === 1">
+      <div class="skipContinueContainer">
+        <div class="buttonContainer">
           <button
+            v-if="activeDiceCheck()"
+            @click="
+              inactiveDie(),
+                checkWinner(),
+                reRollDie(activeDieKeys),
+                toggleTurn(),
+                resetAtackingDefending()
+            "
+          >
+            Continue
+          </button>
+          <button
+            v-if="Object.keys(attackingDice).length === 1"
             @click="
               reRollDie(activeDieKeys), toggleTurn(), resetAtackingDefending()
             "
           >
             Skip
           </button>
-          <p>Skip to re-roll selected die</p>
-        </template>
+        </div>
+        <p v-if="Object.keys(attackingDice).length === 1">
+          Skip to re-roll selected die
+        </p>
       </div>
     </div>
     <!-- attacking -->
     <div class="player">
       <div class="attackingDiceBox">
         <h2>Attacking: {{ activePlayer }}</h2>
-        <button @click="openModal" class="modalBtn">Instructions</button>
+        <button @click="openModal" class="modalBtn">?</button>
         <dialog ref="dialog">
           <button autofocus @click="closeModal">Close</button>
           <Instructions />
@@ -230,17 +233,23 @@ const {
   margin-top: auto;
 }
 
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
 .buttonContainer > button {
-  margin: 0 5%;
+  font-size: clamp(1rem, 1rem + 2vw, 1.7rem);
   width: 40%;
 }
 
-.buttonContainer > p {
+.skipContinueContainer > p {
   text-align: center;
 }
 
 h2 {
   display: inline-block;
+  font-size: clamp(1rem, 1rem + 3vw, 2rem);
 }
 
 dialog {
