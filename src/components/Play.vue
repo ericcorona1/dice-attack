@@ -134,15 +134,16 @@ const {
         >
           Continue
         </button>
-        <button
-          v-if="Object.keys(attackingDice).length === 1"
-          @click="
-            reRollDie(activeDieKeys), toggleTurn(), resetAtackingDefending()
-          "
-        >
-          Skip
-        </button>
-        <p>Skip to re-roll selected die</p>
+        <template v-if="Object.keys(attackingDice).length === 1">
+          <button
+            @click="
+              reRollDie(activeDieKeys), toggleTurn(), resetAtackingDefending()
+            "
+          >
+            Skip
+          </button>
+          <p>Skip to re-roll selected die</p>
+        </template>
       </div>
     </div>
     <!-- attacking -->
