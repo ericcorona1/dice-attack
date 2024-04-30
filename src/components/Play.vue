@@ -142,6 +142,7 @@ const {
         >
           Skip
         </button>
+        <p>Skip to re-roll selected die</p>
       </div>
     </div>
     <!-- attacking -->
@@ -228,13 +229,13 @@ const {
   margin-top: auto;
 }
 
-.buttonContainer {
-  display: flex;
-  justify-content: space-around;
+.buttonContainer > button {
+  margin: 0 5%;
+  width: 40%;
 }
 
-.buttonContainer > button {
-  width: 40%;
+.buttonContainer > p {
+  text-align: center;
 }
 
 h2 {
