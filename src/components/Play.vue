@@ -19,7 +19,7 @@ const closeModal = () => {
 };
 
 const buttonClick = useButtonClick();
-const { highlightOff, highlightOn } = buttonClick;
+const { highlightOff, highlightOn, highlightReset } = buttonClick;
 
 const playerStore = usePlayersStore();
 const {
