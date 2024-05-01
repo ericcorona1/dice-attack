@@ -97,4 +97,14 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
 .selectArea {
   margin-top: auto;
 }
+
+@media (max-width: 500px) {
+  .diceHoldingBox {
+    flex-wrap: wrap;
+  }
+  .diceHoldingBox > button {
+    width: clamp(60px, 100% / 6, 70px);
+    margin: 0 5%;
+  }
+}
 </style>
