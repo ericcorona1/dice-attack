@@ -1,13 +1,13 @@
 <script setup>
 import Dice from "./Dice.vue";
 import { useMenuStore } from "../stores/menu";
-const activeMenu = useMenuStore();
+const menu = useMenuStore();
 </script>
 
 <template>
   <section class="page">
     <header>
-      <h2>Capture all opponent's dice</h2>
+      <h2>Capture opponent's dice</h2>
     </header>
     <div class="wrapper">
       <h3>Greater Than Attack</h3>
@@ -31,8 +31,8 @@ const activeMenu = useMenuStore();
     </div>
 
     <button
-      v-if="activeMenu.activeMenu === Instructions"
-      @click="activeMenu.changeActiveMenu('welcome')"
+      v-if="menu.activeMenu === 'instructions'"
+      @click="menu.changeActiveMenu('welcome')"
     >
       Home
     </button>
@@ -47,16 +47,20 @@ section > * {
   display: flex;
   justify-content: space-evenly;
   max-width: calc(100% - 20px);
-  margin: auto;
+  margin: 10px auto;
   gap: 2%;
+  align-items: center;
 }
 
 .attackType p {
-  font-size: clamp(4rem, 20vw, 10rem);
-  margin: auto;
+  font-size: clamp(25px, 5vw + 1em, 80px);
 }
 
 .attackType .dice {
   width: 20%;
+  height: min-content;
+  padding: 1px 4px;
+  background-color: white;
+  border-radius: 5px;
 }
 </style>
