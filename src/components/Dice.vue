@@ -26,5 +26,6 @@ const diceTypes = {
 <style scoped>
 .dice {
   display: flex;
+  font-size: clamp(20px, 1rem + 3vw, 25px);
 }
 </style>

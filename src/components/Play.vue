@@ -155,7 +155,7 @@ const {
         <h2>Attacking: {{ activePlayer }}</h2>
         <button @click="openModal" class="modalBtn">?</button>
         <dialog ref="dialog">
-          <button autofocus @click="closeModal">Close</button>
+          <button autofocus @click="closeModal">X</button>
           <Instructions />
         </dialog>
         <DiceSelectArea>
@@ -261,9 +261,16 @@ dialog {
   height: 90vh;
   background-color: var(--color-background);
   color: var(--color-text);
+  padding: clamp(5px, 5px + 2vw, 25px);
+  overflow: hidden;
+}
+
+dialog > button {
+  font-size: clamp(10px, 20px + 1vw, 50px);
 }
 
 dialog > section {
+  padding: 0;
   border: none;
 }
 

@@ -27,7 +27,7 @@
     flex-wrap: wrap;
   }
   .selectArea > * {
-    width: 70px;
+    width: clamp(60px, 100% / 6, 70px);
     margin: 0 5%;
   }
 }

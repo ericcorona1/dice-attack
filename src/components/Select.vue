@@ -70,7 +70,6 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
 
 <style scoped>
 .container {
-  /* position: relative; */
   display: flex;
   flex-direction: column;
 }
