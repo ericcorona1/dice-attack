@@ -234,7 +234,13 @@ const {
 }
 
 .diceContainer > button {
-  width: clamp(60px, 100% / 3 - 5px, 180px);
+  width: clamp(60px, 100% / 3 - 5px, 100px);
+}
+
+@media (min-width: 909px) {
+  .diceContainer > button {
+    margin: 0 20px;
+  }
 }
 
 .total {

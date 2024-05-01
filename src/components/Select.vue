@@ -83,7 +83,7 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
 }
 
 .diceHoldingBox > button {
-  width: 15%;
+  width: clamp(50px, 100% / 6, 120px);
 }
 
 .confirmationBox {

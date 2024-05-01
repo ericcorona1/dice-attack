@@ -14,10 +14,9 @@
 }
 
 .selectArea > * {
-  width: clamp(50px, 100% / 6, 200px);
+  width: clamp(50px, 100% / 6, 120px);
   margin: 0 5px;
 }
-
 .inactive > svg > *:not(text) {
   fill: cornflowerblue;
 }
