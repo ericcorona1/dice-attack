@@ -141,6 +141,7 @@ const {
               inactiveDie(),
                 checkWinner(),
                 reRollDie(activeDieKeys),
+                highlightReset(),
                 toggleTurn(),
                 resetAtackingDefending()
             "
@@ -150,7 +151,10 @@ const {
           <button
             v-if="Object.keys(attackingDice).length === 1"
             @click="
-              reRollDie(activeDieKeys), toggleTurn(), resetAtackingDefending()
+              reRollDie(activeDieKeys),
+                highlightReset(),
+                toggleTurn(),
+                resetAtackingDefending()
             "
           >
             Skip
