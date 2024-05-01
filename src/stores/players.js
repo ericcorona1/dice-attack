@@ -13,13 +13,11 @@ export const usePlayersStore = defineStore("players", () => {
       chosenDice: {},
       reRoll: false,
       selectPhaseComplete: false,
-      highlighted: false,
     },
     player2: {
       chosenDice: {},
       reRoll: false,
       selectPhaseComplete: false,
-      highlighted: false,
     },
   });
   // check active and inactive players
@@ -53,6 +51,7 @@ export const usePlayersStore = defineStore("players", () => {
         faceValue: faceValue,
         rollValue: randomValue,
         active: true,
+        higlight: false,
       };
     } else {
       alert("Maximum limit of dice reached.");
@@ -85,7 +84,6 @@ export const usePlayersStore = defineStore("players", () => {
       }
     }
   }
-  // indicate that select phase is completed
   function selectPhaseCompleted() {
     const player1 = players.value.player1;
     const player2 = players.value.player2;
@@ -113,10 +111,9 @@ export const usePlayersStore = defineStore("players", () => {
     );
 
     console.log(`All are not active: ${allInactive}`);
-    // If all dice are inactive, set the active menu to indicate the winning player
+
     if (allInactive) {
       setWinner();
-      // Assuming you have a method to change the active menu
       menuStore.changeActiveMenu("winner");
     }
   }
