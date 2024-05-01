@@ -100,7 +100,10 @@ const {
             <button
               class="attacking"
               v-for="(item, key) in attackingDice"
-              @click="removeDie(attackingDice, key)"
+              @click="
+                removeDie(attackingDice, key),
+                  highlightOff(key, activePlayerFormatted)
+              "
             >
               <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
             </button>
@@ -116,7 +119,10 @@ const {
             <button
               class="defending"
               v-for="(item, key) in defendingDice"
-              @click="removeDie(defendingDice, key)"
+              @click="
+                removeDie(defendingDice, key),
+                  highlightOff(key, inactivePlayerFormatted)
+              "
             >
               <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
             </button>
@@ -169,10 +175,15 @@ const {
             v-for="(item, key) in players[activePlayerFormatted].chosenDice"
           >
             <button
+              :class="{
+                highlight:
+                  players[activePlayerFormatted].chosenDice[key].highlight,
+              }"
               v-if="item.active"
               @click="
                 moveDiceToAttackingDefending(key, activePlayerFormatted),
-                  setActiveDieKeys(key)
+                  setActiveDieKeys(key),
+                  highlightOn(key, activePlayerFormatted)
               "
             >
               <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
