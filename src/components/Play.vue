@@ -4,21 +4,22 @@ import DiceSelectArea from "./DiceSelectArea.vue";
 import Instructions from "./Instructions.vue";
 import { storeToRefs } from "pinia";
 import { usePlayersStore } from "../stores/players";
+import { useButtonClick } from "../stores/buttonClick";
 import { useAttackingDefendingDiceStore } from "../stores/attackingDefendingDice";
 import { ref } from "vue";
 
-// Define a ref for the dialog
 const dialog = ref(null);
 
-// Function to open the modal
 const openModal = () => {
   dialog.value.showModal();
 };
 
-// Function to close the modal
 const closeModal = () => {
   dialog.value.close();
 };
+
+const buttonClick = useButtonClick();
+const { highlightOff, highlightOn } = buttonClick;
 
 const playerStore = usePlayersStore();
 const {
@@ -65,10 +66,15 @@ const {
           v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
         >
           <button
+            :class="{
+              highlight:
+                players[inactivePlayerFormatted].chosenDice[key].highlight,
+            }"
             v-if="item.active"
             @click="
               moveDiceToAttackingDefending(key, inactivePlayerFormatted),
-                setInactiveDieKey(key)
+                setInactiveDieKey(key),
+                highlightOn(key, inactivePlayerFormatted)
             "
           >
             <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
@@ -282,5 +288,13 @@ dialog::backdrop {
   display: inline-block;
   margin-left: 5%;
   padding: 0 5px;
+}
+
+.highlight {
+  box-sizing: border-box;
+  background-color: rgb(177, 177, 177);
+  border: 0.1rem solid rgb(71, 71, 71);
+  border-radius: 5px;
+  padding: 1.6px 4.6px;
 }
 </style>
