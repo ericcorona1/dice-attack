@@ -213,7 +213,7 @@ const {
 }
 
 .diceContainer > button {
-  width: clamp(50px, 100% / 3 - 5px, 180px);
+  width: clamp(60px, 100% / 3 - 5px, 180px);
 }
 
 .total {
@@ -239,7 +239,6 @@ const {
 }
 
 .buttonContainer > button {
-  font-size: clamp(1rem, 1rem + 2vw, 1.7rem);
   width: 40%;
 }
 
@@ -282,5 +281,6 @@ dialog::backdrop {
 .modalBtn {
   display: inline-block;
   margin-left: 5%;
+  padding: 0 5px;
 }
 </style>
