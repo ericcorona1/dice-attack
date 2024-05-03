@@ -55,7 +55,7 @@ const {
   <section class="container">
     <!-- attacking -->
     <div class="player attackingDiceBox">
-      <div>
+      <div class="helpContainer">
         <h2>Attacking: {{ activePlayer }}</h2>
         <button @click="openModal" class="modalBtn">?</button>
       </div>
@@ -270,6 +270,10 @@ const {
   text-align: center;
 }
 
+.helpContainer {
+  position: relative;
+}
+
 h2 {
   display: inline;
   font-size: clamp(1rem, 1rem + 3vw, 2rem);
@@ -303,9 +307,8 @@ dialog::backdrop {
 }
 
 .modalBtn {
-  display: inline-block;
-  margin-left: 5%;
-  padding: 0 5px;
+  position: absolute;
+  right: 0;
 }
 
 .highlight {
@@ -325,12 +328,6 @@ dialog::backdrop {
   }
 
   .defendingDiceBox {
-    margin: 0;
-  }
-
-  .modalBtn {
-    display: inline;
-    padding: 0;
     margin: 0;
   }
 }
