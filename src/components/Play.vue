@@ -94,8 +94,8 @@ const {
     </div>
 
     <!-- Active Dice Field -->
-    <div class="targetDiceBox">
-      <!-- Attacking -->
+    <!-- Attacking -->
+    <div class="playField">
       <div class="activeDice">
         <div class="activeDiceSides left">
           <div class="diceContainer">
@@ -114,7 +114,6 @@ const {
             <p>Total: {{ attackingTotal }}</p>
           </div>
         </div>
-        <!-- <div class="divider"></div> -->
         <!-- Defending -->
         <div class="activeDiceSides right">
           <div class="diceContainer">
@@ -134,6 +133,7 @@ const {
           </div>
         </div>
       </div>
+
       <!-- Toggle and win check -->
       <div class="skipContinueContainer">
         <div class="buttonContainer">
@@ -215,10 +215,17 @@ const {
   justify-content: space-between;
 }
 
+.playField {
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
 .activeDice {
   display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 10px;
+  height: 100%;
+  /* padding: 10px; */
 }
 
 .activeDiceSides {
@@ -238,8 +245,9 @@ const {
 .diceContainer {
   display: flex;
   flex-wrap: wrap;
+  flex: 1;
   justify-content: space-around;
-  gap: 2px;
+  align-items: center;
 }
 
 .diceContainer > button {
@@ -335,13 +343,8 @@ dialog::backdrop {
     flex: 1 1 20%;
   }
 
-  .targetDiceBox {
-    height: 100%;
+  .playField {
     flex: 1 1 60%;
-  }
-
-  .activeDice {
-    height: 100%;
   }
 
   .defendingDiceBox {
