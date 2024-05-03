@@ -225,7 +225,6 @@ const {
 .activeDice {
   display: flex;
   height: 100%;
-  /* padding: 10px; */
 }
 
 .activeDiceSides {
@@ -349,6 +348,10 @@ dialog::backdrop {
 
   .defendingDiceBox {
     margin: 0;
+  }
+
+  .buttonContainer > button {
+    font-size: clamp(20px, 100%, 30px);
   }
 }
 </style>
