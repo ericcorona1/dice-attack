@@ -41,7 +41,7 @@ const {
   inactiveDieKey,
 } = storeToRefs(attackingDefendingStore);
 const {
-  moveDiceToAttackingDefending,
+  toggleDie,
   removeDie,
   activeDiceCheck,
   setInactiveDieKey,
@@ -74,7 +74,7 @@ const {
             }"
             v-if="item.active"
             @click="
-              moveDiceToAttackingDefending(key, activePlayerFormatted),
+              toggleDie(key, activePlayerFormatted, attackingDice),
                 setActiveDieKeys(key),
                 highlightToggle(key, activePlayerFormatted)
             "
@@ -120,10 +120,7 @@ const {
             <button
               class="defending"
               v-for="(item, key) in defendingDice"
-              @click="
-                removeDie(defendingDice, key),
-                  highlightOff(key, inactivePlayerFormatted)
-              "
+              @click="highlightOff(key, inactivePlayerFormatted)"
             >
               <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
             </button>
@@ -187,7 +184,7 @@ const {
             }"
             v-if="item.active"
             @click="
-              moveDiceToAttackingDefending(key, inactivePlayerFormatted),
+              toggleDie(key, inactivePlayerFormatted, defendingDice),
                 setInactiveDieKey(key),
                 highlightOn(key, inactivePlayerFormatted)
             "

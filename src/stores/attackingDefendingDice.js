@@ -29,7 +29,28 @@ export const useAttackingDefendingDiceStore = defineStore(
     const inactiveDieKey = ref("");
 
     // Logic to copy dice from player to attacking dice
-    function moveDiceToAttackingDefending(key, player) {
+    // function moveDiceToAttackingDefending(key, player, obj) {
+
+    //   const clickedPlayer = players.value[player];
+    //   const activePlayer = player1Turn.value
+    //     ? players.value.player1
+    //     : players.value.player2;
+    //   const inactivePlayer = player1Turn.value
+    //     ? players.value.player2
+    //     : players.value.player1;
+    //   const id = key;
+    //   if (clickedPlayer === activePlayer) {
+    //     attackingDice.value[id] = { ...activePlayer.chosenDice[id] };
+    //     return attackingDice.value[id];
+    //   } else if (Object.keys(defendingDice.value).length < 1) {
+    //     defendingDice.value[id] = { ...inactivePlayer.chosenDice[id] };
+    //     return defendingDice.value[id];
+    //   }
+    // }
+
+    function toggleDie(key, player, targetObj) {
+      const target =
+        targetObj === attackingDice ? attackingDice : defendingDice;
       const clickedPlayer = players.value[player];
       const activePlayer = player1Turn.value
         ? players.value.player1
@@ -38,22 +59,28 @@ export const useAttackingDefendingDiceStore = defineStore(
         ? players.value.player2
         : players.value.player1;
       const id = key;
-      if (clickedPlayer === activePlayer) {
-        attackingDice.value[id] = { ...activePlayer.chosenDice[id] };
-        return attackingDice.value[id];
-      } else if (Object.keys(defendingDice.value).length < 1) {
-        defendingDice.value[id] = { ...inactivePlayer.chosenDice[id] };
-        return defendingDice.value[id];
-      }
-    }
 
-    function removeDie(obj, key) {
-      if (obj.hasOwnProperty(key)) {
-        delete obj[key];
-        return true;
+      if (clickedPlayer === activePlayer) {
+        // If the die is already in the target object, remove it
+        if (target.value.hasOwnProperty(id)) {
+          delete target.value[id];
+          return false; // Indicate that the die was removed
+        } else {
+          // Otherwise, add the die to the target object
+          target.value[id] = { ...activePlayer.chosenDice[id] };
+          return true; // Indicate that the die was added
+        }
       } else {
-        return false;
+        // If the target object is defending dice and it's not already full, add the die
+        if (
+          target === defendingDice &&
+          Object.keys(defendingDice.value).length < 1
+        ) {
+          target.value[id] = { ...inactivePlayer.chosenDice[id] };
+          return true; // Indicate that the die was added
+        }
       }
+      return false; // Indicate that the die was neither added nor removed
     }
 
     // Logic to see if active player can defeat inactive player
@@ -100,8 +127,7 @@ export const useAttackingDefendingDiceStore = defineStore(
       defendingTotal,
       activeDieKeys,
       inactiveDieKey,
-      moveDiceToAttackingDefending,
-      removeDie,
+      toggleDie,
       activeDiceCheck,
       setInactiveDieKey,
       setActiveDieKeys,
