@@ -166,43 +166,41 @@ const {
       </div>
     </div>
     <!-- attacking -->
-    <div class="player">
-      <div class="attackingDiceBox">
-        <h2>Attacking: {{ activePlayer }}</h2>
-        <button @click="openModal" class="modalBtn">?</button>
-        <dialog ref="dialog">
-          <button autofocus @click="closeModal">X</button>
-          <Instructions />
-        </dialog>
-        <DiceSelectArea>
-          <template
-            v-for="(item, key) in players[activePlayerFormatted].chosenDice"
+    <div class="player attackingDiceBox">
+      <h2>Attacking: {{ activePlayer }}</h2>
+      <button @click="openModal" class="modalBtn">?</button>
+      <dialog ref="dialog">
+        <button autofocus @click="closeModal">X</button>
+        <Instructions />
+      </dialog>
+      <DiceSelectArea>
+        <template
+          v-for="(item, key) in players[activePlayerFormatted].chosenDice"
+        >
+          <button
+            :class="{
+              highlight:
+                players[activePlayerFormatted].chosenDice[key].highlight,
+            }"
+            v-if="item.active"
+            @click="
+              moveDiceToAttackingDefending(key, activePlayerFormatted),
+                setActiveDieKeys(key),
+                highlightOn(key, activePlayerFormatted)
+            "
           >
-            <button
-              :class="{
-                highlight:
-                  players[activePlayerFormatted].chosenDice[key].highlight,
-              }"
-              v-if="item.active"
-              @click="
-                moveDiceToAttackingDefending(key, activePlayerFormatted),
-                  setActiveDieKeys(key),
-                  highlightOn(key, activePlayerFormatted)
-              "
-            >
-              <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-            </button>
-            <template v-else>
-              <!-- Render inactive dice differently here -->
-              <Dice
-                :selectedDie="item.faceValue"
-                :value="item.rollValue"
-                class="inactive"
-              />
-            </template>
+            <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+          </button>
+          <template v-else>
+            <!-- Render inactive dice differently here -->
+            <Dice
+              :selectedDie="item.faceValue"
+              :value="item.rollValue"
+              class="inactive"
+            />
           </template>
-        </DiceSelectArea>
-      </div>
+        </template>
+      </DiceSelectArea>
     </div>
   </section>
 </template>
@@ -325,6 +323,16 @@ dialog::backdrop {
   }
   .player {
     height: 100%;
+  }
+
+  .attackingDiceBox {
+    margin: 0;
+  }
+
+  .modalBtn {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
   }
 }
 </style>
