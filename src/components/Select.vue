@@ -107,10 +107,4 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
     margin: 0 5%;
   }
 }
-
-@media (max-height: 664px) {
-  .container {
-    flex-direction: row;
-  }
-}
 </style>

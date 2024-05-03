@@ -97,7 +97,7 @@ const {
     <div class="targetDiceBox">
       <!-- Attacking -->
       <div class="activeDice">
-        <div class="activeDiceSides">
+        <div class="activeDiceSides left">
           <div class="diceContainer">
             <button
               class="attacking"
@@ -114,9 +114,9 @@ const {
             <p>Total: {{ attackingTotal }}</p>
           </div>
         </div>
-        <div class="divider"></div>
+        <!-- <div class="divider"></div> -->
         <!-- Defending -->
-        <div class="activeDiceSides">
+        <div class="activeDiceSides right">
           <div class="diceContainer">
             <button
               class="defending"
@@ -227,15 +227,23 @@ const {
   flex-direction: column;
 }
 
+.left {
+  border-right: 1px solid gray;
+}
+
+.right {
+  border-left: 1px solid gray;
+}
+
 .diceContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 5px;
+  gap: 2px;
 }
 
 .diceContainer > button {
-  width: clamp(50px, 100% / 3 - 5px, 100px);
+  width: clamp(60px, 100% / 3 - 2px, 100px);
 }
 
 @media (min-width: 909px) {
@@ -250,11 +258,6 @@ const {
 
 .total > p {
   text-align: center;
-}
-
-.divider {
-  width: 5px;
-  background-color: grey;
 }
 
 .buttonContainer {
@@ -309,7 +312,8 @@ dialog::backdrop {
 .modalBtn {
   position: absolute;
   right: 0;
-  top: 0;
+  bottom: 0;
+  margin-bottom: 3px;
   font-size: clamp(20px, 100%, 40px);
 }
 
@@ -326,11 +330,17 @@ dialog::backdrop {
     flex-direction: row;
   }
 
-  .container > * {
-    flex: 1;
+  .player {
+    height: 100%;
+    flex: 1 1 20%;
   }
 
-  .player {
+  .targetDiceBox {
+    height: 100%;
+    flex: 1 1 60%;
+  }
+
+  .activeDice {
     height: 100%;
   }
 
