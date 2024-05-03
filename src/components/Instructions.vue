@@ -9,24 +9,27 @@ const menu = useMenuStore();
     <header>
       <h2>Capture opponent's dice</h2>
     </header>
-    <div class="wrapper">
-      <h3>Greater Than Attack</h3>
-      <p>1 attacking die only</p>
-      <div class="attackType">
-        <Dice :value="11" selected-die="D12" />
-        <p>></p>
-        <Dice :value="6" selected-die="D20" />
+
+    <div class="instructions">
+      <div class="wrapper">
+        <h3>Greater Than Attack</h3>
+        <p>1 attacking die only</p>
+        <div class="attackType">
+          <Dice :value="11" selected-die="D12" />
+          <p>></p>
+          <Dice :value="6" selected-die="D20" />
+        </div>
       </div>
-    </div>
-    <div class="wrapper">
-      <h3>Equal To Attack</h3>
-      <p>2 or more attacking die</p>
-      <div class="attackType">
-        <Dice :value="8" selected-die="D12" />
-        <Dice :value="6" selected-die="D6" />
-        <Dice :value="2" selected-die="D4" />
-        <p>=</p>
-        <Dice :value="16" selected-die="D20" />
+      <div class="wrapper">
+        <h3>Equal To Attack</h3>
+        <p>2 or more attacking die</p>
+        <div class="attackType">
+          <Dice :value="8" selected-die="D12" />
+          <Dice :value="6" selected-die="D6" />
+          <Dice :value="2" selected-die="D4" />
+          <p>=</p>
+          <Dice :value="16" selected-die="D20" />
+        </div>
       </div>
     </div>
 
@@ -40,9 +43,12 @@ const menu = useMenuStore();
 </template>
 
 <style scoped>
-section > * {
-  margin: 20px auto;
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
 .attackType {
   display: flex;
   justify-content: space-evenly;
@@ -62,5 +68,12 @@ section > * {
   padding: 1px 4px;
   background-color: white;
   border-radius: 5px;
+}
+
+@media (max-height: 664px) {
+  .instructions {
+    display: flex;
+    justify-content: space-around;
+  }
 }
 </style>

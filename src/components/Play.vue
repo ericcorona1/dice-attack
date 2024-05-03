@@ -303,6 +303,8 @@ dialog {
 }
 
 dialog > button {
+  position: absolute;
+  right: 0;
   font-size: clamp(10px, 20px + 1vw, 50px);
 }
 
