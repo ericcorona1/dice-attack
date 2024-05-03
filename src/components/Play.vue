@@ -235,7 +235,7 @@ const {
 }
 
 .diceContainer > button {
-  width: clamp(60px, 100% / 3 - 5px, 100px);
+  width: clamp(50px, 100% / 3 - 5px, 100px);
 }
 
 @media (min-width: 909px) {
