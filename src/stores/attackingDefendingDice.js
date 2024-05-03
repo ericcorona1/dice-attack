@@ -29,28 +29,11 @@ export const useAttackingDefendingDiceStore = defineStore(
     const inactiveDieKey = ref("");
 
     // Logic to copy dice from player to attacking dice
-    // function moveDiceToAttackingDefending(key, player, obj) {
-
-    //   const clickedPlayer = players.value[player];
-    //   const activePlayer = player1Turn.value
-    //     ? players.value.player1
-    //     : players.value.player2;
-    //   const inactivePlayer = player1Turn.value
-    //     ? players.value.player2
-    //     : players.value.player1;
-    //   const id = key;
-    //   if (clickedPlayer === activePlayer) {
-    //     attackingDice.value[id] = { ...activePlayer.chosenDice[id] };
-    //     return attackingDice.value[id];
-    //   } else if (Object.keys(defendingDice.value).length < 1) {
-    //     defendingDice.value[id] = { ...inactivePlayer.chosenDice[id] };
-    //     return defendingDice.value[id];
-    //   }
-    // }
 
     function toggleDie(key, player, targetObj) {
       const target =
-        targetObj === attackingDice ? attackingDice : defendingDice;
+        targetObj === "attackingDice" ? attackingDice : defendingDice;
+
       const clickedPlayer = players.value[player];
       const activePlayer = player1Turn.value
         ? players.value.player1

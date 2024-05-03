@@ -74,7 +74,7 @@ const {
             }"
             v-if="item.active"
             @click="
-              toggleDie(key, activePlayerFormatted, attackingDice),
+              toggleDie(key, activePlayerFormatted, 'attackingDice'),
                 setActiveDieKeys(key),
                 highlightToggle(key, activePlayerFormatted)
             "
@@ -185,8 +185,8 @@ const {
             v-if="item.active"
             @click="
               toggleDie(key, inactivePlayerFormatted, defendingDice),
-                setInactiveDieKey(key),
-                highlightOn(key, inactivePlayerFormatted)
+                setInactiveDieKey(key);
+              highlightToggle(key, inactivePlayerFormatted);
             "
           >
             <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
