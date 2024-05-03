@@ -5,8 +5,9 @@ export const useButtonClick = defineStore("buttonClick", () => {
   const playerStore = usePlayersStore();
   const { players } = storeToRefs(playerStore);
 
-  function highlightOn(key, player) {
-    return (players.value[player].chosenDice[key].highlight = true);
+  function highlightToggle(key, player) {
+    return (players.value[player].chosenDice[key].highlight =
+      !players.value[player].chosenDice[key].highlight);
   }
 
   function highlightOff(key, player) {
@@ -21,5 +22,5 @@ export const useButtonClick = defineStore("buttonClick", () => {
       }
     }
   }
-  return { highlightOff, highlightOn, highlightReset };
+  return { highlightOff, highlightToggle, highlightReset };
 });

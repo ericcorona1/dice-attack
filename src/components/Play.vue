@@ -19,7 +19,7 @@ const closeModal = () => {
 };
 
 const buttonClick = useButtonClick();
-const { highlightOff, highlightOn, highlightReset } = buttonClick;
+const { highlightOff, highlightToggle, highlightReset } = buttonClick;
 
 const playerStore = usePlayersStore();
 const {
@@ -76,7 +76,7 @@ const {
             @click="
               moveDiceToAttackingDefending(key, activePlayerFormatted),
                 setActiveDieKeys(key),
-                highlightOn(key, activePlayerFormatted)
+                highlightToggle(key, activePlayerFormatted)
             "
           >
             <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
