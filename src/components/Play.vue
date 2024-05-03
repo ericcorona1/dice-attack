@@ -309,6 +309,8 @@ dialog::backdrop {
 .modalBtn {
   position: absolute;
   right: 0;
+  top: 0;
+  font-size: clamp(20px, 100%, 40px);
 }
 
 .highlight {
@@ -323,6 +325,11 @@ dialog::backdrop {
   .container {
     flex-direction: row;
   }
+
+  .container > * {
+    flex: 1;
+  }
+
   .player {
     height: 100%;
   }
