@@ -39,8 +39,8 @@
   .selectArea {
     flex: 1;
     display: flex;
-    flex-direction: column;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
   .selectArea > button {
     width: calc(100% / 3);

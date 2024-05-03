@@ -53,28 +53,30 @@ const {
 
 <template>
   <section class="container">
-    <!-- defending -->
-    <div class="player">
-      <h2>
-        Defending:
-        <span>
-          {{ inactivePlayer }}
-        </span>
-      </h2>
-      <DiceSelectArea class="defendingDiceBox">
+    <!-- attacking -->
+    <div class="player attackingDiceBox">
+      <div>
+        <h2>Attacking: {{ activePlayer }}</h2>
+        <button @click="openModal" class="modalBtn">?</button>
+      </div>
+      <dialog ref="dialog">
+        <button autofocus @click="closeModal">X</button>
+        <Instructions />
+      </dialog>
+      <DiceSelectArea>
         <template
-          v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
+          v-for="(item, key) in players[activePlayerFormatted].chosenDice"
         >
           <button
             :class="{
               highlight:
-                players[inactivePlayerFormatted].chosenDice[key].highlight,
+                players[activePlayerFormatted].chosenDice[key].highlight,
             }"
             v-if="item.active"
             @click="
-              moveDiceToAttackingDefending(key, inactivePlayerFormatted),
-                setInactiveDieKey(key),
-                highlightOn(key, inactivePlayerFormatted)
+              moveDiceToAttackingDefending(key, activePlayerFormatted),
+                setActiveDieKeys(key),
+                highlightOn(key, activePlayerFormatted)
             "
           >
             <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
@@ -165,28 +167,29 @@ const {
         </p>
       </div>
     </div>
-    <!-- attacking -->
-    <div class="player attackingDiceBox">
-      <h2>Attacking: {{ activePlayer }}</h2>
-      <button @click="openModal" class="modalBtn">?</button>
-      <dialog ref="dialog">
-        <button autofocus @click="closeModal">X</button>
-        <Instructions />
-      </dialog>
+
+    <!-- defending -->
+    <div class="player defendingDiceBox">
+      <h2>
+        Defending:
+        <span>
+          {{ inactivePlayer }}
+        </span>
+      </h2>
       <DiceSelectArea>
         <template
-          v-for="(item, key) in players[activePlayerFormatted].chosenDice"
+          v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
         >
           <button
             :class="{
               highlight:
-                players[activePlayerFormatted].chosenDice[key].highlight,
+                players[inactivePlayerFormatted].chosenDice[key].highlight,
             }"
             v-if="item.active"
             @click="
-              moveDiceToAttackingDefending(key, activePlayerFormatted),
-                setActiveDieKeys(key),
-                highlightOn(key, activePlayerFormatted)
+              moveDiceToAttackingDefending(key, inactivePlayerFormatted),
+                setInactiveDieKey(key),
+                highlightOn(key, inactivePlayerFormatted)
             "
           >
             <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
@@ -254,10 +257,6 @@ const {
   background-color: grey;
 }
 
-.attackingDiceBox {
-  margin-top: auto;
-}
-
 .buttonContainer {
   display: flex;
   justify-content: space-around;
@@ -272,7 +271,7 @@ const {
 }
 
 h2 {
-  display: inline-block;
+  display: inline;
   font-size: clamp(1rem, 1rem + 3vw, 2rem);
 }
 
@@ -325,12 +324,12 @@ dialog::backdrop {
     height: 100%;
   }
 
-  .attackingDiceBox {
+  .defendingDiceBox {
     margin: 0;
   }
 
   .modalBtn {
-    display: inline-block;
+    display: inline;
     padding: 0;
     margin: 0;
   }
