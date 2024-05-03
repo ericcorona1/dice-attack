@@ -30,4 +30,20 @@
     margin: 0 5%;
   }
 }
+
+@media (max-height: 664px) {
+  .player {
+    display: flex;
+    flex-direction: column;
+  }
+  .selectArea {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .selectArea > button {
+    width: calc(100% / 3);
+  }
+}
 </style>

@@ -318,4 +318,13 @@ dialog::backdrop {
   border-radius: 5px;
   padding: 1.6px 4.6px;
 }
+
+@media (max-height: 664px) {
+  .container {
+    flex-direction: row;
+  }
+  .player {
+    height: 100%;
+  }
+}
 </style>
