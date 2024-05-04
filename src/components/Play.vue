@@ -98,9 +98,9 @@ const {
       <div class="activeDice">
         <div class="activeDiceSides left">
           <div class="diceContainer">
-            <button class="attacking" v-for="(item, key) in attackingDice">
+            <div class="attacking" v-for="(item, key) in attackingDice">
               <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-            </button>
+            </div>
           </div>
           <div class="total">
             <p>Total: {{ attackingTotal }}</p>
@@ -109,9 +109,9 @@ const {
         <!-- Defending -->
         <div class="activeDiceSides right">
           <div class="diceContainer">
-            <button class="defending" v-for="(item, key) in defendingDice">
+            <div class="defending" v-for="(item, key) in defendingDice">
               <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
-            </button>
+            </div>
           </div>
           <div class="total">
             <p>Total: {{ defendingTotal }}</p>
@@ -127,7 +127,7 @@ const {
             @click="
               inactiveDie(),
                 checkWinner(),
-                reRollDie(activeDieKeys),
+                reRollDie(Object.keys(attackingDice)),
                 highlightReset(),
                 toggleTurn(),
                 resetAtackingDefending()
@@ -138,7 +138,7 @@ const {
           <button
             v-if="Object.keys(attackingDice).length === 1"
             @click="
-              reRollDie(activeDieKeys),
+              reRollDie(Object.keys(attackingDice)),
                 highlightReset(),
                 toggleTurn(),
                 resetAtackingDefending()
@@ -233,12 +233,12 @@ const {
   align-items: center;
 }
 
-.diceContainer > button {
+.diceContainer > div {
   width: clamp(60px, 100% / 3 - 2px, 100px);
 }
 
 @media (min-width: 909px) {
-  .diceContainer > button {
+  .diceContainer > div {
     margin: 0 20px;
   }
 }

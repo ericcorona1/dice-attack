@@ -23,10 +23,6 @@ export const useButtonClick = defineStore("buttonClick", () => {
     }
   }
 
-  function highlightOff(key, player) {
-    return (players.value[player].chosenDice[key].highlight = false);
-  }
-
   function highlightReset() {
     for (const playerKey in players.value) {
       const playerData = players.value[playerKey];
@@ -35,5 +31,5 @@ export const useButtonClick = defineStore("buttonClick", () => {
       }
     }
   }
-  return { highlightOff, highlightToggle, highlightReset };
+  return { highlightToggle, highlightReset };
 });

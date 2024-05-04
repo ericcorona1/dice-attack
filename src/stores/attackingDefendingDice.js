@@ -79,20 +79,20 @@ export const useAttackingDefendingDiceStore = defineStore(
       return false;
     }
 
-    function setInactiveDieKey(key) {
-      return (inactiveDieKey.value = key);
-    }
+    // function setInactiveDieKey(key) {
+    //   return (inactiveDieKey.value = key);
+    // }
 
-    function setActiveDieKeys(key) {
-      activeDieKeys.value.push(key);
-      return activeDieKeys;
-    }
+    // function setActiveDieKeys(key) {
+    //   activeDieKeys.value.push(key);
+    //   return activeDieKeys;
+    // }
 
     function inactiveDie() {
       const inactivePlayer = player1Turn.value
         ? players.value.player2
         : players.value.player1;
-      const key = inactiveDieKey.value;
+      const key = Object.keys(defendingDice.value)[0];
       return (inactivePlayer.chosenDice[key].active = false);
     }
 
@@ -110,11 +110,8 @@ export const useAttackingDefendingDiceStore = defineStore(
       inactiveDieKey,
       toggleDie,
       activeDiceCheck,
-      setInactiveDieKey,
-      setActiveDieKeys,
       inactiveDie,
       resetAtackingDefending,
-      // Other properties and methods
     };
   }
 );
