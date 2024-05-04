@@ -99,7 +99,11 @@ const {
         <div class="activeDiceSides left">
           <div class="diceContainer">
             <div class="attacking" v-for="(item, key) in attackingDice">
-              <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+              <Dice
+                :selectedDie="item.faceValue"
+                :value="item.rollValue"
+                class="inactive"
+              />
             </div>
           </div>
           <div class="total">
@@ -110,7 +114,11 @@ const {
         <div class="activeDiceSides right">
           <div class="diceContainer">
             <div class="defending" v-for="(item, key) in defendingDice">
-              <Dice :selectedDie="item.faceValue" :value="item.rollValue" />
+              <Dice
+                :selectedDie="item.faceValue"
+                :value="item.rollValue"
+                class="inactive"
+              />
             </div>
           </div>
           <div class="total">
