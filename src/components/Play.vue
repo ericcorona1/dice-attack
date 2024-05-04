@@ -184,9 +184,8 @@ const {
             }"
             v-if="item.active"
             @click="
-              toggleDie(key, inactivePlayerFormatted, defendingDice),
-                setInactiveDieKey(key);
-              highlightToggle(key, inactivePlayerFormatted);
+              highlightToggle(key, inactivePlayerFormatted),
+                toggleDie(key, inactivePlayerFormatted)
             "
           >
             <Dice :selectedDie="item.faceValue" :value="item.rollValue" />

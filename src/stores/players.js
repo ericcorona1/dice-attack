@@ -38,6 +38,7 @@ export const usePlayersStore = defineStore("players", () => {
 
   const winner = ref("");
   // add die in the select phase
+  // See here for dice model
   function addDieToPlayer(faceValue) {
     const activePlayer = player1Turn.value
       ? players.value.player1

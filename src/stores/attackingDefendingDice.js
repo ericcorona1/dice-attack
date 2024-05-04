@@ -43,16 +43,14 @@ export const useAttackingDefendingDiceStore = defineStore(
         : players.value.player1;
       const id = key;
 
-      if (clickedPlayer === activePlayer) {
-        // If the die is already in the target object, remove it
-        if (target.value.hasOwnProperty(id)) {
-          delete target.value[id];
-          return false; // Indicate that the die was removed
-        } else {
-          // Otherwise, add the die to the target object
-          target.value[id] = { ...activePlayer.chosenDice[id] };
-          return true; // Indicate that the die was added
-        }
+      // If the die is already in the target object, remove it
+      if (target.value.hasOwnProperty(id)) {
+        delete target.value[id];
+        return false; // Indicate that the die was removed
+      } else if (clickedPlayer === activePlayer) {
+        // Otherwise, add the die to the target object
+        target.value[id] = { ...activePlayer.chosenDice[id] };
+        return true; // Indicate that the die was added
       } else {
         // If the target object is defending dice and it's not already full, add the die
         if (
@@ -62,8 +60,8 @@ export const useAttackingDefendingDiceStore = defineStore(
           target.value[id] = { ...inactivePlayer.chosenDice[id] };
           return true; // Indicate that the die was added
         }
+        return false; // Indicate that the die was neither added nor removed
       }
-      return false; // Indicate that the die was neither added nor removed
     }
 
     // Logic to see if active player can defeat inactive player
