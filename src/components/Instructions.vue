@@ -64,6 +64,7 @@ section {
 
 .attackType .dice {
   width: 20%;
+  max-width: 200px;
   height: min-content;
   padding: 1px 4px;
   background-color: white;
