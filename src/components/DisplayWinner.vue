@@ -11,6 +11,14 @@ function reloadThePage() {
 </script>
 
 <template>
-  <h2>{{ winner }} WINS</h2>
-  <button @click="reloadThePage()">Rematch</button>
+  <section>
+    <h2>{{ winner }} WINS</h2>
+    <button @click="reloadThePage()">Rematch</button>
+  </section>
 </template>
+
+<style>
+button {
+  display: block;
+}
+</style>
