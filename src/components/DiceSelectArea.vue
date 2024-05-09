@@ -43,7 +43,7 @@
     flex-wrap: wrap;
   }
   .selectArea > button {
-    width: clamp(60px, 100% / 3, 100px);
+    width: clamp(50px, 100% / 3, 100px);
   }
 }
 </style>

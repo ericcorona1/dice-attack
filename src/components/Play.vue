@@ -63,7 +63,7 @@ const {
         <button autofocus @click="closeModal">X</button>
         <Instructions />
       </dialog>
-      <DiceSelectArea>
+      <DiceSelectArea class="playDice">
         <template
           v-for="(item, key) in players[activePlayerFormatted].chosenDice"
         >
@@ -169,7 +169,7 @@ const {
       <h2>
         {{ inactivePlayer }}
       </h2>
-      <DiceSelectArea>
+      <DiceSelectArea class="playDice">
         <template
           v-for="(item, key) in players[inactivePlayerFormatted].chosenDice"
         >
@@ -339,7 +339,7 @@ dialog::backdrop {
   }
 
   .buttonContainer > button {
-    font-size: clamp(20px, 100%, 30px);
+    font-size: clamp(15px, 100%, 30px);
   }
 }
 </style>
