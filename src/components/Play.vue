@@ -225,6 +225,11 @@ const {
   flex-direction: column;
 }
 
+.modalBtn {
+  width: 50%;
+  margin: 0 auto;
+}
+
 .left {
   border-right: 1px solid gray;
 }
