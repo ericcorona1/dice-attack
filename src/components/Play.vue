@@ -280,7 +280,7 @@ const {
 
 h2 {
   /* display: inline; */
-  font-size: clamp(20px, 1rem + 3vw, 2rem);
+  font-size: clamp(20px, 1rem + 2vw, 2rem);
 }
 
 dialog {
