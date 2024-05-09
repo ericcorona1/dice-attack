@@ -56,8 +56,8 @@ const {
     <!-- attacking -->
     <div class="player attackingDiceBox">
       <div class="helpContainer">
-        <h2>Attacking: {{ activePlayer }}</h2>
-        <button @click="openModal" class="modalBtn">?</button>
+        <h2>{{ activePlayer }}</h2>
+        <!-- <button @click="openModal" class="modalBtn">?</button> -->
       </div>
       <dialog ref="dialog">
         <button autofocus @click="closeModal">X</button>
@@ -111,7 +111,10 @@ const {
           </div>
         </div>
         <!-- Defending -->
+
         <div class="activeDiceSides right">
+          <button @click="openModal" class="modalBtn">?</button>
+
           <div class="diceContainer">
             <div class="defending" v-for="(item, key) in defendingDice">
               <Dice
@@ -164,10 +167,7 @@ const {
     <!-- defending -->
     <div class="player defendingDiceBox">
       <h2>
-        Defending:
-        <span>
-          {{ inactivePlayer }}
-        </span>
+        {{ inactivePlayer }}
       </h2>
       <DiceSelectArea>
         <template
@@ -273,12 +273,14 @@ const {
 }
 
 .helpContainer {
-  position: relative;
+  /* position: relative; */
+  display: flex;
+  justify-content: space-between;
 }
 
 h2 {
-  display: inline;
-  font-size: clamp(1rem, 1rem + 3vw, 2rem);
+  /* display: inline; */
+  font-size: clamp(20px, 1rem + 3vw, 2rem);
 }
 
 dialog {
@@ -308,14 +310,6 @@ dialog > section {
 dialog::backdrop {
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-}
-
-.modalBtn {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin-bottom: 3px;
-  font-size: clamp(20px, 100%, 40px);
 }
 
 .highlight {
