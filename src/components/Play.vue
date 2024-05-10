@@ -325,7 +325,7 @@ dialog::backdrop {
   padding: 1.6px 4.6px;
 }
 
-@media (max-height: 664px) {
+@media (min-width: 700px) and (max-height: 664px) {
   .container {
     flex-direction: row;
   }
