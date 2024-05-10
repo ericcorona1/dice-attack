@@ -101,6 +101,7 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
 @media (max-width: 500px) {
   .diceHoldingBox {
     flex-wrap: wrap;
+    height: fit-content;
   }
   .diceHoldingBox > button {
     width: clamp(60px, 100% / 6, 70px);

@@ -24,6 +24,7 @@
 @media (max-width: 500px) {
   .selectArea {
     flex-wrap: wrap;
+    height: fit-content;
   }
   .selectArea > * {
     width: clamp(60px, 100% / 6, 70px);
