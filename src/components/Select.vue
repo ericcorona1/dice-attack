@@ -108,7 +108,7 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
   }
 }
 
-@media (max-height: 664px) {
+@media (min-width: 700px) and (max-height: 664px) {
   .container {
     flex-direction: row;
     column-gap: 5px;
