@@ -12,7 +12,7 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
 </script>
 
 <template>
-  <button>
+  <button class="test">
     <div class="svg-container">
       <svg viewBox="0 0 100 100">
         <!-- D4: Triangle -->
@@ -86,6 +86,9 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
 </template>
 
 <style scoped>
+.test {
+  width: 100px;
+}
 .container {
   display: flex;
   flex-direction: column;
