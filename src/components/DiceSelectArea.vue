@@ -6,7 +6,8 @@
 
 <style>
 .selectArea {
-  height: 20vh;
+  /* height: 20vh; */
+  height: 200px;
   background-color: gray;
   display: flex;
   justify-content: space-around;
