@@ -1,10 +1,6 @@
 <template>
   <div class="svg-container">
-    <svg
-      viewBox="0 0 100 100"
-      preserveAspectRatio="xMidYMid meet"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 100 100">
       <!-- D20: Hexagon -->
 
       <polygon
