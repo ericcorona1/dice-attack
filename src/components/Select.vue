@@ -12,21 +12,23 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
 </script>
 
 <template>
-  <div class="svg-container">
-    <svg viewBox="0 0 100 100">
-      <!-- D4: Triangle -->
-      <polygon points="50,5 95,95 5,95" fill="blue" />
-      <text
-        x="50"
-        y="65"
-        text-anchor="middle"
-        dominant-baseline="middle"
-        fill="white"
-      >
-        {{ value }}
-      </text>
-    </svg>
-  </div>
+  <button>
+    <div class="svg-container">
+      <svg viewBox="0 0 100 100">
+        <!-- D4: Triangle -->
+        <polygon points="50,5 95,95 5,95" fill="blue" />
+        <text
+          x="50"
+          y="65"
+          text-anchor="middle"
+          dominant-baseline="middle"
+          fill="white"
+        >
+          {{ value }}
+        </text>
+      </svg>
+    </div>
+  </button>
   <section class="container">
     <div class="pendingField">
       <div class="instructionText">
