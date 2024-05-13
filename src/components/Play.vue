@@ -317,6 +317,8 @@ dialog::backdrop {
   backdrop-filter: blur(5px);
 }
 
+/* Here is the override for highlight, so maybe make these for all buttons */
+
 .highlight {
   box-sizing: border-box;
   background-color: rgb(177, 177, 177);
