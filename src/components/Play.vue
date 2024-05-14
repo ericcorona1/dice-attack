@@ -327,8 +327,8 @@ dialog::backdrop {
   padding: 1.6px 4.6px;
 }
 
-.highlight > svg > * {
-  fill: red;
+.highlight > svg > *:not(text) {
+  fill: cornflowerblue;
 }
 
 @media (min-width: 620px) and (max-height: 664px) {
