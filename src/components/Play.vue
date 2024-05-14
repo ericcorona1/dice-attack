@@ -317,7 +317,7 @@ dialog::backdrop {
   backdrop-filter: blur(5px);
 }
 
-/* Here is the override for highlight, so maybe make these for all buttons */
+/* Here is the override for highlight, so maybe make these for all */
 
 .highlight {
   box-sizing: border-box;
@@ -325,6 +325,10 @@ dialog::backdrop {
   border: 0.1rem solid rgb(71, 71, 71);
   border-radius: 5px;
   padding: 1.6px 4.6px;
+}
+
+.highlight > svg > * {
+  fill: red;
 }
 
 @media (min-width: 620px) and (max-height: 664px) {
