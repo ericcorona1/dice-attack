@@ -26,7 +26,7 @@
   padding: 1.6px 4.6px;
 }
 
-.inactive > svg > *:not(text) {
+.inactive > *:not(text) {
   fill: cornflowerblue;
 }
 
