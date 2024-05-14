@@ -109,7 +109,7 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
     height: fit-content;
   }
   .diceHoldingBox > button {
-    width: clamp(60px, 100% / 6, 70px);
+    width: clamp(50px, 100% / 6, 70px);
     margin: 0 5%;
   }
 }
@@ -119,6 +119,15 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
     flex-direction: row;
     column-gap: 5px;
   }
+
+  .pendingField {
+    flex: 2;
+  }
+
+  /* .diceHoldingBox > button {
+    width: clamp(50px, 100% / 6, 70px);
+    margin: 0 5%;
+  } */
 
   .selectArea {
     height: 100%;

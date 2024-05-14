@@ -36,8 +36,7 @@
     height: fit-content;
   }
   .selectArea > * {
-    width: 76px;
-    /* width: clamp(60px, 100% / 6, 100px); */
+    width: clamp(60px, 100% / 6, 100px);
     margin: 0 5%;
   }
 }
