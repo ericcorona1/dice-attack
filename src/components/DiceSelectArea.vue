@@ -17,6 +17,15 @@
   width: clamp(50px, 100% / 6, 120px);
   margin: 0 5px;
 }
+
+.selectArea > button {
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+  border: 0.1rem solid rgb(71, 71, 71);
+  border-radius: 5px;
+  padding: 1.6px 4.6px;
+}
+
 .inactive > svg > *:not(text) {
   fill: cornflowerblue;
 }
