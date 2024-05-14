@@ -32,8 +32,7 @@ const { addDieToPlayer, toggleTurn, reRollDie, selectPhaseCompleted } =
           Object.keys(players[activePlayerFormatted].chosenDice).length == 6
         "
       >
-        <h3>{{ activePlayer }} May Re-roll 1 Die</h3>
-        <p>Click one of your selected die to re-roll</p>
+        <p>{{ activePlayer }} May Re-roll 1 Die</p>
 
         <button
           @click="
