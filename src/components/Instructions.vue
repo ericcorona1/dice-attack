@@ -5,7 +5,7 @@ const menu = useMenuStore();
 </script>
 
 <template>
-  <section class="page">
+  <section class="instructionsWrapper">
     <header>
       <h2>Capture opponent's dice</h2>
     </header>
@@ -43,7 +43,7 @@ const menu = useMenuStore();
 </template>
 
 <style scoped>
-section {
+.instructionsWrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -62,19 +62,23 @@ section {
   font-size: clamp(25px, 5vw + 1em, 80px);
 }
 
-.attackType .dice {
+.attackType > .dice {
   width: 20%;
   max-width: 200px;
-  height: min-content;
+  /* height: min-content; */
   padding: 1px 4px;
   background-color: white;
   border-radius: 5px;
 }
 
-@media (max-height: 664px) {
+@media (min-width: 620px) and (max-height: 664px) {
   .instructions {
     display: flex;
     justify-content: space-around;
+  }
+
+  .wrapper {
+    flex: 1;
   }
 }
 </style>
