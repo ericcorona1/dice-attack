@@ -57,11 +57,12 @@ const {
     <div class="player attackingDiceBox">
       <div class="helpContainer">
         <h2>{{ activePlayer }}</h2>
-        <!-- <button @click="openModal" class="modalBtn">?</button> -->
       </div>
       <dialog ref="dialog">
-        <button autofocus @click="closeModal">X</button>
-        <Instructions />
+        <div class="dialogWrapper">
+          <button autofocus @click="closeModal">X</button>
+          <Instructions />
+        </div>
       </dialog>
       <DiceSelectArea class="playDice">
         <template
@@ -284,7 +285,6 @@ const {
 }
 
 h2 {
-  /* display: inline; */
   font-size: clamp(20px, 1rem + 2vw, 2rem);
 }
 
@@ -298,16 +298,17 @@ dialog {
   background-color: var(--color-background);
   color: var(--color-text);
   padding: clamp(5px, 5px + 2vw, 25px);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
-dialog > button {
+.dialogWrapper > button {
   position: absolute;
-  right: 0;
+  top: 10px;
+  right: 10px;
   font-size: clamp(10px, 20px + 1vw, 50px);
 }
 
-dialog > section {
+.dialogWrapper > section {
   padding: 0;
   border: none;
 }
@@ -317,7 +318,11 @@ dialog::backdrop {
   backdrop-filter: blur(5px);
 }
 
-/* Here is the override for highlight, so maybe make these for all */
+@media (max-width: 375px) {
+  .dialogWrapper {
+    margin-top: 30px;
+  }
+}
 
 .highlight {
   box-sizing: border-box;
